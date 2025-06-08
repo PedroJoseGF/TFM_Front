@@ -330,7 +330,7 @@ export default function AdminUsers() {
           </Modal>
 
           <div className="user-list-container">
-            <button className="user-create-button" onClick={handleCreate} disabled={loading}>
+            <button className="user-create-button" onClick={handleCreate} disabled={loading || sendingWelcomeEmail}>
               + Crear nuevo usuario
             </button>
             <div className="table-container">
