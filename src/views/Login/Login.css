@@ -1,0 +1,122 @@
+.loginView {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95dvh;
+}
+
+.login-container {
+    background-color: #f02424;
+    width: 100%;
+    height: 55%;
+    margin: 0 30px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+}
+
+.login-content {
+    position: relative;
+    background-color: white;
+    margin: 9px;
+    border-radius: 15px;
+    height: 90%;
+    width: 85%;
+}
+
+.login-content h1, .login-container label{
+    color: black;
+    margin: 15px 0;
+}
+
+.login-content .login-form {
+    margin-top: 50px;
+}
+
+.login-content .form-group {
+    flex-direction: column;
+    gap: 0;
+}
+
+.login-container label {
+    text-align: left;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.login-container input {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    color: black;
+}
+
+.btnSubmitLogin {
+    background-color: #f02424;
+    margin-top: 25px;
+}
+
+.login-content input:-webkit-autofill,
+.login-content input:-webkit-autofill:hover, 
+.login-content input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.loginError {
+    position: absolute;
+    /* bottom: 0; */
+    bottom: 85px;
+    color: #000;
+    background-color: #f35151b4;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    min-width: 230px;
+}
+
+.loader {
+    position: absolute;
+    top: 155px;
+    left: 35%;
+    width: 100px;
+    height: 100px;
+    border: 15px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 768px) {
+    .loginView {
+        width: 50dvw;
+        max-width: 750px;
+        min-width: 450px;
+    }
+
+    .login-container {
+        max-width: 600px;
+        min-width: 400px;
+    }
+
+    .loader {
+        left: 40%;
+    }
+}

@@ -1,0 +1,102 @@
+.info-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 10px;
+    /* margin: 0 15px 15px 15px; */
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: #fff;
+}
+
+.info-menu .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 0;
+    width: 100%;
+}
+
+.info-menu .menu .menu-option {
+    cursor: pointer;
+}
+
+/* .info-menu .menu-option {
+    padding: 5px;
+} */
+
+.info-menu .menu-option {
+    padding: 10px 0 5px 0;
+    font-size: 16px;
+}
+
+.info-menu li.active {
+    border-bottom: 5px solid #f02424;
+}
+
+.info-menu li.active:hover {
+    color: black;
+    font-weight: 400;
+    border-bottom: 5px solid #f02424;
+    /* cursor: default; */
+}
+
+.info-menu li:hover {
+    /* filter: invert(34%) sepia(75%) saturate(5832%) hue-rotate(350deg) brightness(98%) contrast(92%); */
+    color: #f02424;
+    /* text-decoration-line: underline; */
+    cursor: default;
+    font-weight: 600;
+}
+
+.info-menu .menu-option:hover {
+    border-bottom: 5px solid #ccc;
+}
+
+.info-menu div:hover .menu-option {
+    border-bottom: 5px solid #ccc;
+}
+
+.submenu {
+    position: absolute;
+    z-index: 2;
+    margin-top: 5px;
+    background-color: #f7f7f7;
+    text-align: start;
+    box-shadow: 5px 5px 5px 3px #eee;
+}
+
+.submenu-content {
+    padding: 10px 0;
+    border: 1px solid black;
+}
+
+.submenu-procedures {
+    /* left: 60px; */
+    top: 40px;
+    position: absolute;
+}
+
+.submenu-myFolder {
+    /* left: 145px; */
+    top: 40px;
+    position: absolute;
+}
+
+.submenu-advertising {
+    /* left: 345px; */
+    top: 40px;
+    position: absolute;
+}
+
+.submenu-content li {
+    list-style-type: square;
+    padding-right: 10px;
+    margin-left: 25px;
+}
+
+@media (min-width: 768px) {
+    .info-menu li {
+        font-size: 16px;
+    }
+}

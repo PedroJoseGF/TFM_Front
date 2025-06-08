@@ -1,0 +1,214 @@
+.advertisementsView {
+    background-color: #f1f1f1;
+    margin-bottom: 0;
+}
+
+.advertisements-container {
+    display: flex;
+    /* justify-content: center; */
+    text-align: start;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+.advertisements-container .isLoading {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.menuAdvertisements img {
+    margin: 16px 0;
+}
+
+.title-advertisements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-advertisements h2 {
+    color: black;
+    margin: 0;
+    font-size: 30px;
+}
+
+.title-advertisements img {
+    margin-top: 5px;
+    width: 35px;
+    /* height: 25px; */
+}
+
+.version-desktop {
+    width: 85dvw;
+}
+
+.advertisements-table {
+    margin: 10px 0 35px 0;
+    border-top: 1px solid #e4ded8;
+    border-bottom: 1px solid #e4ded8;
+    padding: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.advertisements-table thead td {
+    background-color: #e3e3e3;
+}
+
+.advertisements-table tbody td {
+    padding: 5px;
+}
+
+.advertisements-table thead td:first-child {
+    padding-left: 10px;
+}
+
+.advertisements-table tbody td .status {
+    padding: 3px 6px;
+    text-align: center;
+    width: fit-content;
+}
+
+.advertisements-table tbody td .status.pending {
+    background-color: #f79400b5;
+}
+
+.advertisements-table tbody td .status.notified {
+    background-color: #0099ffa6;
+}
+
+.advertisements-table tbody td .status.rejected, .advertisements-table tbody td .status.closed {
+    background-color: #ff000c8a;
+}
+
+.advertisements-table tbody td .status.opened {
+    background-color: #00ff73a6;
+}
+
+.advertisements-table tbody td:first-child {
+    padding-left: 10px;
+}
+
+.advertisements-table tbody td:last-child {
+    padding-left: 10px;
+}
+
+/* .advertisements-table tbody td:last-child {
+    text-align: right;
+} */
+
+.advertisements-table th {
+    color: black;
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.advertisements-table td {
+    color: black;
+    font-size: 16px;
+    border-bottom: 1px solid #e4ded8;
+    padding: 0 10px;
+}
+
+.btnMore {
+    background-color: #f02424;
+    width: 130px;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.version-mobile {
+    width: 85dvw;
+}
+
+.version-mobile th {
+    width: 25%;
+    font-size: 16px;
+}
+
+.version-mobile td {
+    /* width: 50%; */
+    font-size: 16px;
+}
+
+.version-mobile .table-actions {
+    display: contents;
+}
+
+.version-mobile .table-actions th {
+    padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .advertisementsView {
+        width: 100%;
+        /* padding: 0 20px; */
+    }
+
+    .advertisements-container .isLoading {
+        justify-content: left;
+    }
+
+    .title-advertisements {
+        justify-content: normal;
+    }
+
+    .advertisements-table td {
+        font-size: 14px;
+    }
+
+    /* .btnMore {
+        font-size: 15px;
+        width: 125px;
+    } */
+
+    .advertisementsView .info-menu .menu {
+        padding-top: 10px;
+    }
+
+    .advertisementsView .submenu-procedures {
+        top: 50px;
+        position: absolute;
+    }
+
+    .advertisementsView .submenu-myFolder {
+        top: 50px;
+        position: absolute;
+    }
+
+    .advertisementsView .submenu-advertising {
+        top: 50px;
+        position: absolute;
+    }
+
+    /* .advertisement-container .isLoading {
+        margin-top: 20px;
+        justify-content: left;
+    } */
+}
+
+@media (min-width: 1280px) {
+    .advertisementsView {
+        width: 100%;
+        /* padding: 0 30px; */
+    }
+
+    .advertisements-container {
+        margin: 0 20px;
+    }
+
+    /* .advertisement-container .isLoading {
+        margin-top: 20px;
+        justify-content: left;
+    } */
+    
+    .advertisements-table {
+        margin: 15px 0 35px 0;
+    }
+
+    .advertisements-table td {
+        font-size: 16px;
+    }
+}
