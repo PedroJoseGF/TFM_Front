@@ -1,0 +1,173 @@
+.buttonsModal {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.proceduresView {
+    background-color: #f1f1f1;
+    margin-bottom: 0;
+    
+}
+
+.procedures-container {
+    text-align: start;
+    margin: 0 20px;
+}
+
+.titleProcedures {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.titleProcedures h2 {
+    color: black;
+} 
+
+.titleProcedures img {
+    width: 30px;
+    height: 30px;
+}
+
+.formProcedures {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+
+.formProcedures form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formProcedures label {
+    color: black;
+}
+
+.formProcedures input, .formProcedures textarea {
+    background-color: white;
+    color: black;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.formProcedures input:-webkit-autofill,
+.formProcedures input:-webkit-autofill:hover, 
+.formProcedures input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.formProcedures textarea {
+    height: 65px;
+}
+
+.fileInput {
+    width: 100px;
+}
+
+.titleListFiles {
+    background-color: aliceblue;
+    font-weight: 500;
+    font-size: 20px;
+    margin: 10px 0 5px 0;
+}
+
+.listFiles {
+    margin: 0;
+}
+
+.listFiles li {
+    list-style: initial;
+    margin-left: 20px;
+}
+
+.file-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-info p {
+    margin: 3px;
+}
+
+.formProcedures button {
+    width: 200px;
+    background-color: #3770dc;
+}
+
+.formProcedures button.submitProcedure {
+    background-color: #3ead23;
+    margin-top: 30px;
+    width: max-content;
+}
+
+.file-upload {
+  display: none;
+}
+
+.custom-file-upload {
+    background-color: #41abffb3;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 135px;
+}
+
+.listFiles {
+    margin-bottom: 8px;
+}
+
+.formProcedures .success-message {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin: 15px 20px;
+    color: black;
+}
+
+.formProcedures p {
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .proceduresView {
+        width: 100%;
+    }
+
+    .proceduresView .info-menu .menu {
+        padding-top: 10px;
+    }
+
+    .proceduresView .submenu-procedures {
+        top: 50px;
+        position: absolute;
+    }
+
+    .proceduresView .submenu-myFolder {
+        top: 50px;
+        position: absolute;
+    }
+
+    .proceduresView .submenu-advertising {
+        top: 50px;
+        position: absolute;
+    }
+}
+
+@media (min-width: 1280px) {
+    .procedures-section {
+        margin-left: 5%;
+    }
+}

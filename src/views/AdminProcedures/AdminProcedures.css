@@ -1,0 +1,242 @@
+.adminProcedures-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.adminProcedures-content h1 {
+    font-size: 28px;
+}
+
+.adminProcedures-content h2 {
+    margin: 5px;
+    font-size: 30px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.procedure-form-container {
+    background-color: #eee;
+    width: -webkit-fill-available;
+    margin: 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.procedure-form-title {
+    text-align: center;
+}
+
+.procedure-form {
+    width: -webkit-fill-available;
+}
+
+.procedure-form button {
+    background-color: #f02424;
+    margin: 15px;
+    width: 75%;
+}
+
+.form-group {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group label {
+    margin-right: 15px;
+}
+
+.procedures-info p {
+    text-align: left;
+    margin-left: 25px;
+}
+
+.buttonsValidation {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 15px;
+}
+
+.buttonsValidation .btnAccepted {
+    background-color: #1d72f7;
+    width: max-content;
+}
+
+.buttonsValidation .btnRejected {
+    background-color: #fc5555;
+}
+
+.procedure-form-container input, .procedure-form-container select {
+    background-color: #fff;
+    width: 65%;
+    color: black;
+    padding: 8px;
+}
+
+.procedure-form-container textarea {
+    background-color: #fff;
+    width: 65%;
+    color: black;
+    padding: 8px;
+    height: 100px;
+}
+
+.procedure-form-container select {
+    width: 67%;
+}
+
+.procedure-form-container input:-webkit-autofill,
+.procedure-form-container input:-webkit-autofill:hover, 
+.procedure-form-container input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.messageCreated {
+    padding: 30px 10px;
+    border-radius: 15px;
+    width: 42%;
+    border: 1px solid;
+    box-shadow: 5px 5px 5px 3px #dcdcdc;
+}
+
+.success-message {
+    background-color: #7fffe3;
+}
+
+.error-message {
+    background-color: #fa6060;
+}
+
+.procedure-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 90dvw;
+    margin-top: 15px;
+}
+
+.procedure-create-button {
+    background-color: #f02424;
+}
+
+.procedure-list-container h2 {
+    font-size: 35px;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.table-container th {
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.procedure-table {
+    width: 90dvw;
+}
+
+.procedure-table .isLoading {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.procedure-table th:first-child {
+    padding-left: 10px;
+}
+
+.procedure-table th:last-child {
+    padding-left: 5px;
+}
+
+.procedure-table td {
+    text-align: left;
+    font-size: 10px;
+    padding-right: 5px;
+}
+
+.procedure-table td:first-child {
+    padding-left: 10px;
+}
+
+.procedure-table td:last-child {
+    padding-left: 5px;
+}
+
+.statusNotification {
+    padding: 3px;
+    margin: 8px 0;
+}
+
+.adminProcedures-content .messageUpdated {
+    padding: 30px 10px;
+    border-radius: 15px;
+    width: 70%;
+    border: 1px solid;
+    box-shadow: 5px 5px 5px 3px #dcdcdc;
+}
+
+.table-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-actions button {
+    margin: 5px;
+}
+
+.table-actions .validate {
+    background-color: #ff8e00;
+}
+
+.table-actions .view {
+    background-color: #0051ff;
+}
+
+.table-actions .delete {
+    background-color: #dc143c;
+}
+
+
+@media (min-width: 768px) {
+    .adminProcedures-content h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 20px;
+    }
+
+    .procedure-list-container {
+        align-items: end;
+    }
+
+    .table-container th {
+        font-size: 20px;
+    }
+    
+    .table-container th:last-child {
+        text-align: center;
+    }
+
+    .procedure-table td {
+        font-size: 16px !important;
+    }
+
+    .procedure-table .table-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .adminProcedures-content .table-actions button {
+        margin: 5px;
+        padding: 8px;
+        width: 75px;
+    }
+}

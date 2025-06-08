@@ -1,0 +1,174 @@
+.procedures {
+    width: 90%;
+    border-radius: 8px;
+    margin-bottom: 60px;
+}
+
+.procedures-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    border: 1px solid grey;
+    border-top: solid #f02424;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-left: 35px;
+}
+
+.procedures-content li {
+    color: black;
+    padding: 10px;
+    list-style-type: circle;
+    text-align: left;
+}
+
+.procedures-content img, .myFolder-content img {
+    width: 50px;
+    height: 50px;
+}
+
+.advertisements, .myFolder {
+    width: 90%;
+    border-radius: 8px;
+    margin-bottom: 60px;
+}
+
+.advertisements h2, .myFolder h2, .procedures h2 {
+    color: black;
+    margin: 0;
+    font-size: 30px;
+    text-align: left;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.advertisements-content, .myFolder-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border: 1px solid grey;
+    border-top: solid #f02424;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.advert {
+    display: flex;
+    background-color: white;
+    margin: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top: 2px solid grey;
+}
+
+.advert .date {
+    width: 70px;
+    margin: 10px 0 0 10px;
+}
+
+.date .month {
+    background-color: #f02424;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    margin-bottom: 0;
+    padding: 0 2px;
+}
+
+.date .day {
+    font-weight: 600;
+    margin: 5px;
+    margin-top: 0;
+    border: 1px solid #f02424;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.advert-content {
+    width: 100%;
+}
+
+.advert-content .advert-title {
+    text-align: left;
+    padding: 0 15px;
+    margin: 0;
+    margin-top: 10px;
+    color: #000;
+    font-weight: 500;
+}
+
+.advert-descripction {
+    text-align: left;
+    padding: 0 15px;
+    margin-top: 5px;
+}
+
+.procedures-content, .myFolder-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+
+.procedures-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+    padding-left: 35px;
+}
+
+.myFolder-content li {
+    color: black;
+    padding: 10px;
+}
+
+.myFolder img {
+    filter: invert(34%) sepia(75%) saturate(5832%) hue-rotate(350deg) brightness(98%) contrast(92%);
+}
+
+.procedures-content li:hover, .myFolder-content li:hover {
+    filter: invert(34%) sepia(75%) saturate(5832%) hue-rotate(350deg) brightness(98%) contrast(92%);
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.myFolder-content p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.moreAdverts {
+    margin-bottom: 10px;
+    background-color: #f02424;
+}
+
+@media (min-width: 768px) {
+    .home {
+        width: 100%;
+    }
+
+    .info {
+        justify-content: center;
+    }
+
+    .info-content {
+        display: flex;
+    }
+
+    .info-content1 {
+        width: 60%;
+    }
+
+    .info-content2 {
+        width: 40%;
+    }
+
+    .advertisements, .myFolder {
+        max-width: 460px;
+    }
+}

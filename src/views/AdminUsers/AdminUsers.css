@@ -1,0 +1,260 @@
+.adminUsers-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.adminUsers-content h1 {
+    font-size: 28px;
+}
+
+.adminUsers-content h2 {
+    margin: 5px;
+    font-size: 30px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.user-list-container .version-mobile {
+    width: 90dvw;
+}
+
+.user-form-container {
+    background-color: #eee;
+    width: -webkit-fill-available;
+    margin: 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.user-form-title {
+    text-align: center;
+}
+
+.user-form {
+    width: -webkit-fill-available;
+}
+
+.user-form button {
+    background-color: #f02424;
+    margin: 15px;
+    width: 75%;
+}
+
+.user-form-container .form-group {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.form-group.checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 14%;
+}
+
+.form-group.checkbox label, .form-group.checkbox input[type = checkbox] {
+    width: auto;
+}
+
+.form-group label {
+    margin-right: 30px;
+    width: 75%;
+    text-align: left;
+}
+
+.user-form-container input, .user-form-container select {
+    background-color: #fff;
+    width: 75%;
+    color: black;
+    padding: 8px;
+}
+
+.user-form-container select {
+    width: 78%;
+}
+
+.disabledUser {
+    background-color: #d4d4d4;
+}
+
+.user-form-container input:-webkit-autofill,
+.user-form-container input:-webkit-autofill:hover, 
+.user-form-container input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.messageCreated {
+    padding: 30px 10px;
+    border-radius: 15px;
+    width: 42%;
+    border: 1px solid;
+    box-shadow: 5px 5px 5px 3px #dcdcdc;
+}
+
+.success-message {
+    background-color: #7fffe3;
+}
+
+.error-message {
+    background-color: #fa6060;
+}
+
+.user-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 90dvw;
+    margin-top: 15px;
+}
+
+.user-create-button {
+    background-color: #f02424;
+}
+
+.user-list-container h2 {
+    font-size: 35px;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.table-container .isLoading {
+    margin-top: 20px;
+}
+
+.table-container th {
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.user-table {
+    width: 90dvw;
+}
+
+.user-table .isLoading {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.user-table th:first-child {
+    padding-left: 10px;
+}
+
+.user-table th:last-child {
+    padding-left: 5px;
+}
+
+.user-table td {
+    text-align: left;
+    font-size: 10px;
+    padding-right: 5px;
+}
+
+.user-table td:first-child {
+    padding-left: 10px;
+}
+
+.user-table td:last-child {
+    padding-left: 5px;
+}
+
+.roleUser {
+    background-color: dodgerblue;
+    padding: 3px;
+    border-radius: 8px;
+}
+
+.table-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-actions button {
+    margin: 5px;
+}
+
+.table-actions .edit {
+    background-color: dodgerblue;
+}
+
+.table-actions .delete {
+    background-color: crimson;
+}
+
+.table-actions .welcomeEmail{
+        background-color: midnightblue;
+}
+
+.version-mobile th {
+    width: 25%;
+    font-size: 20px;
+}
+
+.version-mobile td {
+    font-size: 16px;
+}
+
+.version-mobile .table-actions {
+    display: contents;
+}
+
+.version-mobile .table-actions th {
+    padding-bottom: 0;
+}
+
+.adminUsers-content .success-message {
+    position: absolute;
+    bottom: 25px;
+    width: 70%;
+}
+
+
+@media (min-width: 768px) {
+    .adminUsers-content h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 20px;
+    }
+
+    .user-list-container {
+        align-items: end;
+    }
+
+    .table-container th {
+        font-size: 20px;
+    }
+    
+    .table-container th:last-child {
+        text-align: center;
+    }
+
+    .user-table td {
+        font-size: 16px !important;
+    }
+
+    .user-table .table-actions {
+        align-items: center;
+    }
+
+    .user-table .table-actions div {
+        display: flex;
+        justify-content: center;
+    }
+
+    .user-table .table-actions button {
+        margin: 5px 10px;
+        max-width: 270px;
+    }
+    
+}

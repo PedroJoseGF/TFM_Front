@@ -1,0 +1,306 @@
+.myFolder-container .isLoading {
+    margin-top: 20px;
+    justify-content: left;
+}
+
+.myFolderView {
+    background-color: #f1f1f1;
+    margin-bottom: 0;
+    color: black;
+}
+
+.myFolder-container {
+    text-align: start;
+    margin: 0 10px;
+}
+
+.myFolder-container .proceedings .modal-title {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.mailbox h2, .proceedings h2 {
+    color: black;
+    margin: 0;
+    font-size: 35px;
+}
+
+.title-mailbox, .title-proceedings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title-mailbox img, .title-proceedings img {
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+}
+
+table {
+    margin: 10px 0 35px 0;
+    border-top: 1px solid #e4ded8;
+    border-bottom: 1px solid #e4ded8;
+    padding: 10px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead td {
+    background-color: #e3e3e3;
+}
+
+thead td:first-child {
+    padding-left: 10px;
+}
+
+.statusHeader {
+    text-align: center;
+}
+
+tbody td .status {
+    padding: 3px 6px;
+    text-align: center;
+    width: fit-content;
+}
+
+tbody td .status.pending {
+    background-color: #f79400b5;
+}
+
+tbody td .status.notified {
+    background-color: #0099ffa6;
+}
+
+tbody td .status.rejected, tbody td .status.closed {
+    background-color: #ff000c8a;
+}
+
+tbody td .status.opened {
+    background-color: #00ff73a6;
+}
+
+tbody td:first-child {
+    padding-left: 10px;
+}
+
+tbody td:last-child {
+    padding-right: 0;
+}
+
+td {
+    color: black;
+    font-size: 8px;
+    padding-right: 3px;
+    border-bottom: 1px solid #e4ded8;
+}
+
+.titleProcedure {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.statusNotification {
+    padding: 5px;
+    text-align: center;
+    border-radius: 15px;
+    width: fit-content;
+}
+
+.statusNotification.pending {
+    background-color: #ff8848ba;
+}
+
+.statusNotification.rejected {
+    background-color: #ff4848ba;
+}
+
+.statusNotification.accepted {
+    background-color: #82ff48ba;
+}
+
+.btnMore {
+    background-color: #f02424;
+    width: 85px;
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile h2 {
+    color: black;
+    background-color: #e3e3e3;
+    text-align: center;
+    margin: 0;
+}
+
+.myData, .controlPanel {
+    background-color: #ededed;
+    margin: 30px 10px;
+}
+
+.profile .inputField {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.profile label {
+    color: #000;
+}
+
+.profile input {
+    background-color: #fff;
+    padding: 5px;
+    margin: 15px;
+    width: 60%;
+}
+
+.controlPanel .buttonsAdmin {
+    background-color: #ededed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 83%;
+    gap: 25px;
+    margin: 20px 0;
+}
+
+.buttonsAdmin button {
+    margin: 0 25px;
+    background-color: #f02424b3;
+    font-size: 20px;
+}
+
+.buttonsAdmin button {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+    
+.buttonsAdmin button img {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+}
+
+.mailbox .version-mobile table, .proceedings .version-mobile table {
+    border-bottom: 3px solid #e4ded8;
+}
+
+.mailbox .version-mobile th, .proceedings .version-mobile th {
+    width: 50%;
+    text-align: left;
+    border-bottom: 1px solid #e4ded8;
+}
+
+@media (min-width: 768px) {
+    .myFolderView {
+        width: 100%;
+    }
+
+    .myFolderView .info-menu .menu {
+        padding-top: 10px;
+    }
+
+    .myFolderView .submenu-procedures {
+        top: 50px;
+        position: absolute;
+    }
+
+    .myFolderView .submenu-myFolder {
+        top: 50px;
+        position: absolute;
+    }
+
+    .myFolderView .submenu-advertising {
+        top: 50px;
+        position: absolute;
+    }
+
+    .myFolder-container .mailbox, .myFolder-container .proceedings {
+        margin: 0 10px;
+    }
+    
+    table {
+        margin: 25px 0 35px 0;
+    }
+
+    td {
+        font-size: 14px;
+    }
+
+    .btnMore {
+        font-size: 15px;
+        width: 125px;
+    }
+
+    .profile {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .profileUser {
+        justify-content: center;
+    }
+
+    .profile input {
+        width: 55%;
+    }
+
+    .myData, .controlPanel {
+        width: 80%;
+        max-width: 800px;
+    }
+
+    .myData {
+        margin-right: 30px;
+    }
+
+    .controlPanel {
+        margin-left: 30px;
+    }
+
+    .controlPanel .buttonsAdmin {
+        margin: 10px 0;
+    }
+}
+
+@media (min-width: 1280px) {
+    .myFolderView {
+        width: 100%;
+    }
+    
+    .myFolder-section {
+        margin-left: 5%;
+    }
+
+    .myFolder-container {
+        margin: 0 20px;
+    }
+
+    .myFolder-container .mailbox, .myFolder-container .proceedings {
+        margin: 0;
+    }
+
+    td {
+        font-size: 16px;
+    }
+
+    .profile input {
+        width: 75%;
+    }
+
+    .myData {
+        margin-left: 0;
+    }
+
+    .controlPanel {
+        margin-right: 0;
+    }
+}
