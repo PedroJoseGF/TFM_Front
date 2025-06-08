@@ -38,13 +38,9 @@ const Menu = ({active}) => {
               <li><Link to="/myfolder/mailbox">Buzón electronico</Link></li>
               <li><Link to="/myfolder/proceedings">Mis expedientes</Link></li>
               <li><Link to="/myfolder/profile">Mis datos</Link></li>
-              {/* <li>Administración</li> */}
             </ul>}
           </div>
         </div>
-        {/* <li className={`menu-option${active === 'priorAppointment' ? ' active' : ''}`}>
-          Cita Previa
-        </li> */}
         <div onMouseEnter={ () => setShowSubmenuAdvertising(true) } onMouseLeave={ () => setShowSubmenuAdvertising(false) }>
           <li className={`menu-option${active === 'advertisements' ? ' active' : ''}`}>
             Publicidad

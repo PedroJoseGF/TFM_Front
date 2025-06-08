@@ -4,7 +4,6 @@ import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../api/client";
 import arrow from "../../assets/flecha-correcta.png";
-/* import advertisements from '../../assets/advertisements.png'; */
 import Modal from "../../components/Modal/Modal";
 import { Link } from "react-router-dom";
 import "./AdminAdvertisements.css";
@@ -25,7 +24,6 @@ export default function AdminAdvertisements() {
   const {user} = useContext(UserContext);
     
   useEffect(() => {
-    /* async () => { */
     setIsLoading(true);
     if (!user) {
       navigate("/login");
@@ -43,8 +41,7 @@ export default function AdminAdvertisements() {
     const handleResize = () => {
       setWidth(window.innerWidth);
     };
-
-    // Agrega el manejador de eventos al detectar cambios de tamaño de ventana
+    
     window.addEventListener("resize", handleResize);
 
     if (width < 768) {
@@ -52,14 +49,13 @@ export default function AdminAdvertisements() {
     } else {
       setTableVertical(false);
     }
-
-    // Limpia el manejador de eventos al desmontar el componente (importante para evitar problemas de memoria)
+    
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
 
-  const { data: advertisements = [] /* , isLoading, error */ } = useQuery({
+  const { data: advertisements = [] } = useQuery({
     queryKey: ["adminAdvertisements"],
     queryFn: async () => {
       try {
@@ -133,7 +129,6 @@ export default function AdminAdvertisements() {
   };
 
   const handleEdit = (advertisement) => {
-    /* window.scrollTo(0, 0); */
     setIsEdit(true);
     setShowModal(true);
     setTitleForm("Actualizar anuncio");
@@ -153,9 +148,6 @@ export default function AdminAdvertisements() {
 
   if (isLoading) return <>Cargando...</>;
 
-  /* if (isLoading) return <div className="isLoading">Cargando anuncios...</div>;
-    if (error) return <div className="error">Error al cargar anuncios...</div>; */
-
   return (
     <div className="adminAdvertisementView">
       <div className="menuMyFolder">
@@ -170,7 +162,6 @@ export default function AdminAdvertisements() {
       <div className="admiAdvertisement-container">
         <div className="adminAdvertisements-content">
           <div className="title-adminAdvertisement">
-            {/* <img src={advertisements} alt="Administrador de Usuarios" /> */}
             <h1>Administrador de anuncios</h1>
           </div>
           <Modal
@@ -189,7 +180,6 @@ export default function AdminAdvertisements() {
             title={titleForm}
           >
             <div className="advertisement-form-container">
-              {/* <h2 className="user-form-title">{titleForm}</h2> */}
               <form onSubmit={handleSubmit} className="advertisement-form">
                 <div className="form-group">
                   <label htmlFor="register-title">Titulo</label>
@@ -199,6 +189,7 @@ export default function AdminAdvertisements() {
                     className="user-form-input"
                     value={form.title}
                     onChange={handleChange}
+                    disabled={createdAdvertisement.isPending || updatedAdvertisement.isPending}
                     required
                   />
                 </div>
@@ -210,6 +201,7 @@ export default function AdminAdvertisements() {
                     className="user-form-input"
                     value={form.procedure}
                     onChange={handleChange}
+                    disabled={createdAdvertisement.isPending || updatedAdvertisement.isPending}
                     required
                   />
                 </div>
@@ -221,6 +213,7 @@ export default function AdminAdvertisements() {
                     className="user-form-input"
                     value={form.category}
                     onChange={handleChange}
+                    disabled={createdAdvertisement.isPending || updatedAdvertisement.isPending}
                     required
                   />
                 </div>
@@ -232,6 +225,7 @@ export default function AdminAdvertisements() {
                     className="user-form-input"
                     value={form.description}
                     onChange={handleChange}
+                    disabled={createdAdvertisement.isPending || updatedAdvertisement.isPending}
                     required
                   />
                 </div>
@@ -283,10 +277,10 @@ export default function AdminAdvertisements() {
           </Modal>
 
           <div className="advertisement-list-container">
-            {/* <h2 className="user-list-title">Lista de usuarios</h2> */}
             <button
               className="advertisement-create-button"
               onClick={handleCreate}
+              disabled={loading}
             >
               + Crear nuevo anuncio
             </button>
@@ -309,7 +303,6 @@ export default function AdminAdvertisements() {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* {(loading) ? <td className="isLoading">Cargando anuncios...</td> : null} */}
                         {!loading ? (
                           advertisements.length !== 0 ? (
                             advertisements.map((advertisement) => (

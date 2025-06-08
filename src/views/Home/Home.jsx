@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery, /* useMutation, useQueryClient */ } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import apiClient from '../../api/client';
 import Card from '../../components/Card/Card';
@@ -14,7 +14,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(3);
 
-  const { data: advertisements = []/* , isLoading, error */ } = useQuery({
+  const { data: advertisements = [] } = useQuery({
     queryKey: ["advertisements"],
     queryFn: async () => {
       try {
@@ -80,33 +80,12 @@ const Home = () => {
   return (
     <div className="home">
       <section className="hero-section">
-        {/* <h1 className="hero-title">Bienvenido a nuestra empresa</h1>
-          <p className="hero-subtitle">
-            Transformando ideas en realidad digital
-          </p> */}
         <img src={imageHome} alt="" />
       </section>
       <div className="info">
         <Menu active="home"></Menu>
         <div className="info-content">
           <div className="info-content1">
-            {/* <div className="procedures">
-                <h2>Trámites</h2>
-                <ul className="procedures-content">
-                  <li>
-                    <a href="">Quejas y reclamaciones</a>
-                  </li>
-                  <li>
-                    <a href="">Solicitud de Licencia de Obra Mayor</a>
-                  </li>
-                  <li>
-                    <a href="">Declaración Responsable Ejecución Obras Menores</a>
-                  </li>
-                  <li>
-                    <a href="">Gestión de padrón de habitantes</a>
-                  </li>
-                </ul>
-              </div> */}
             <Card title="Trámites" className="procedures">
               <li>
                 <Link to="/procedures/claims">Quejas y reclamaciones</Link>
@@ -123,23 +102,6 @@ const Home = () => {
             </Card>
           </div>
           <div className="info-content2">
-            {/* <div className="myFolder">
-                <h2>Mi carpeta electronica</h2>
-                <ul className="myFolder-content">
-                  <li>
-                    <img src={mailLogo} alt="Buzón" />
-                    <p className="">Buzón electronico</p>
-                  </li>
-                  <li>
-                    <img src={myFilesLogo} alt="Expedientes" />
-                    <p className="">Mis expedientes</p>
-                  </li>
-                  <li>
-                    <img src={profileLogo} alt="Perfil" />
-                    <p className="">Mis datos</p>
-                  </li>
-                </ul>
-              </div> */}
             <Card title="Mi carpeta electronica" className="myFolder">
               <Link to="/myfolder/mailbox">
                 <li>
@@ -160,59 +122,6 @@ const Home = () => {
                 </li>
               </Link>
             </Card>
-            {/* <div className="advertisements">
-                <h2>Tablón de anuncios</h2>
-                <div className="advertisements-content">
-                  <div className="advert">
-                    <div className="date">
-                      <p className="month">Mayo</p>
-                      <p className="day">21</p>
-                    </div>
-                    <div className="advert-content">
-                      <h4 className="advert-title">
-                        <a>DECRETO 2025-0216 [DECRETO DE ALCALDIA]</a>
-                      </h4>
-                      <p className="advert-descripction">
-                        DECRETO DE ALCALDIA APROBACION ORDEN DE LLAMAMIENTO DE
-                        ALBAÑILES OFICIALES DE 1ª DEL PLAN ESPECIAL DE EMPLEO
-                        2025.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="advert">
-                    <div className="date">
-                      <p className="month">Mayo</p>
-                      <p className="day">14</p>
-                    </div>
-                    <div className="advert-content">
-                      <h4 className="advert-title">
-                        <a>ANUNCIO INFORMACION PUBLICA</a>
-                      </h4>
-                      <p className="advert-descripction">
-                        Informacion pública sobre calificación ambiental de la
-                        actividad ESTABLECIMIENTO DESTINADO A BOCATERÍA Y VENTA
-                        DE CHUCHERÍAS.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="advert">
-                    <div className="date">
-                      <p className="month">Mayo</p>
-                      <p className="day">12</p>
-                    </div>
-                    <div className="advert-content">
-                      <h4 className="advert-title">
-                        <a>DECRETO 2025-0219 [DECRETO LISTA DEFINITIVA]</a>
-                      </h4>
-                      <p className="advert-descripction">
-                        DECRETO APROBACION LISTA DEFINITIVA MONITORES PROGRAMA
-                        CONCILIA EN VERANO 2025.
-                      </p>
-                    </div>
-                  </div>
-                  <button className="moreAdverts">Más publicaciones</button>
-                </div>
-              </div> */}
             <Card title="Tablón de anuncios" className="advertisements">
               {loading ? <div className="isLoading">Cargando anuncios...</div> : null}
               {!loading && (advertisements.length !== 0 ? (<div>
@@ -224,62 +133,14 @@ const Home = () => {
                     </div>
                     <div className="advert-content">
                       <h4 className="advert-title">
-                        <a>{advertisement.title/* DECRETO 2025-0216 [DECRETO DE ALCALDIA] */}</a>
+                        {advertisement.title}
                       </h4>
                       <p className="advert-descripction">
                         {advertisement.description}
-                        {/* DECRETO DE ALCALDIA APROBACION ORDEN DE LLAMAMIENTO DE
-                        ALBAÑILES OFICIALES DE 1ª DEL PLAN ESPECIAL DE EMPLEO 2025. */}
                       </p>
                     </div>
                   </div>
                 ))}
-              {/* <div className="advert">
-                <div className="date">
-                  <p className="month">Mayo</p>
-                  <p className="day">21</p>
-                </div>
-                <div className="advert-content">
-                  <h4 className="advert-title">
-                    <a>DECRETO 2025-0216 [DECRETO DE ALCALDIA]</a>
-                  </h4>
-                  <p className="advert-descripction">
-                    DECRETO DE ALCALDIA APROBACION ORDEN DE LLAMAMIENTO DE
-                    ALBAÑILES OFICIALES DE 1ª DEL PLAN ESPECIAL DE EMPLEO 2025.
-                  </p>
-                </div>
-              </div>
-              <div className="advert">
-                <div className="date">
-                  <p className="month">Mayo</p>
-                  <p className="day">14</p>
-                </div>
-                <div className="advert-content">
-                  <h4 className="advert-title">
-                    <a>ANUNCIO INFORMACION PUBLICA</a>
-                  </h4>
-                  <p className="advert-descripction">
-                    Informacion pública sobre calificación ambiental de la
-                    actividad ESTABLECIMIENTO DESTINADO A BOCATERÍA Y VENTA DE
-                    CHUCHERÍAS.
-                  </p>
-                </div>
-              </div>
-              <div className="advert">
-                <div className="date">
-                  <p className="month">Mayo</p>
-                  <p className="day">12</p>
-                </div>
-                <div className="advert-content">
-                  <h4 className="advert-title">
-                    <a>DECRETO 2025-0219 [DECRETO LISTA DEFINITIVA]</a>
-                  </h4>
-                  <p className="advert-descripction">
-                    DECRETO APROBACION LISTA DEFINITIVA MONITORES PROGRAMA
-                    CONCILIA EN VERANO 2025.
-                  </p>
-                </div>
-              </div> */}
                 {limit < 10 && <button className="moreAdverts" onClick={moreAdvertisements}>Más publicaciones</button>}
                 {limit > 10 && <Link to="/advertisements"><button className="moreAdverts">Ver todas</button></Link>}
               </div>

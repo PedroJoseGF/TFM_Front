@@ -4,31 +4,24 @@ import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../api/client";
 import arrow from "../../assets/flecha-correcta.png";
-/* import advertisements from '../../assets/advertisements.png'; */
 import Modal from "../../components/Modal/Modal";
 import { Link } from "react-router-dom";
 import "./AdminProcedures.css";
-
-/* const API_URL = process.env.API_URL; */
 
 export default function AdminProcedures() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const [procedureData, setProcedureData] = useState({title: "", proceeding: "", procedure: "", type: "", description: ""});
-  /* const [form, setForm] = useState({  title: "", procedure: "", category: "", description: "" }); */
   const [showModal, setShowModal] = useState(false);
-  /* const [titleForm, setTitleForm] = useState("Crear usuario"); */
   const [isValidate, setIsValidate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  /* const [isCreate, setIsCreate] = useState(false); */
   const [loading, setLoading] = useState(false);
   const [width, setWidth] = useState(innerWidth);
   const [tableVertical, setTableVertical] = useState(false);
   const {user} = useContext(UserContext);
   
   useEffect(() => {
-    /* async () => { */
     setIsLoading(true);
     if (!user) {
       navigate("/login");
@@ -38,7 +31,6 @@ export default function AdminProcedures() {
       }
     }
     setIsLoading(false);
-    /* }; */
   }, [navigate, user]);
 
   useEffect(() => {
@@ -47,7 +39,6 @@ export default function AdminProcedures() {
       setWidth(window.innerWidth);
     };
 
-    // Agrega el manejador de eventos al detectar cambios de tamaño de ventana
     window.addEventListener("resize", handleResize);
 
     if (width < 768) {
@@ -55,14 +46,13 @@ export default function AdminProcedures() {
     } else {
       setTableVertical(false);
     }
-
-    // Limpia el manejador de eventos al desmontar el componente (importante para evitar problemas de memoria)
+    
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
 
-  const { data: procedures = [] /* , isLoading, error */ } = useQuery({
+  const { data: procedures = [] } = useQuery({
     queryKey: ["adminProcedures"],
     queryFn: async () => {
       try {
@@ -77,25 +67,6 @@ export default function AdminProcedures() {
       }
     },
   });
-
-  /* const createdProcedure = useMutation({
-    mutationFn: async (user) => {
-      const { data } = await apiClient.post("/procedures", user);
-      return data;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries(["procedures"]);
-      createdProcedure.reset();
-      setForm({
-        title: "",
-        procedure: "",
-        category: "",
-        description: "",
-      });
-      setIsValidate(false);
-      setShowModal(false);
-    },
-  }); */
 
   const updateProcedure = useMutation({
     mutationFn: async (procedure) => {
@@ -123,19 +94,10 @@ export default function AdminProcedures() {
     },
   });
 
-  /* const handleCreate = () => {
-    setIsValidate(true);
-    setIsCreate(true);
-    setShowModal(true);
-    setTitleForm("Crear anuncio");
-  }; */
-
   const handleValidate = (procedure) => {
-    /* window.scrollTo(0, 0); */
     setProcedureData(procedure);
     setIsValidate(true);
     setShowModal(true);
-    /* setForm(advertisement); */
   };
 
   const handleAcceptedProcedure = () => {
@@ -151,17 +113,6 @@ export default function AdminProcedures() {
     procedureData.closingDate = new Date();
     updateProcedure.mutate(procedureData);
   };
-
-  /* const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  }; */
-
-  /* const handleSubmit = (e) => {
-    e.preventDefault();
-    isValidate
-      ? createdProcedure.mutate(form)
-      : updateProcedure.mutate(form);
-  }; */
 
   if (isLoading) return <>Cargando...</>;
 
@@ -179,7 +130,6 @@ export default function AdminProcedures() {
       <div className="admiProcedures-container">
         <div className="adminProcedures-content">
           <div className="title-adminProcedure">
-            {/* <img src={advertisements} alt="Administrador de Usuarios" /> */}
             <h1>Administrador de expedientes</h1>
           </div>
           <Modal
@@ -187,13 +137,6 @@ export default function AdminProcedures() {
             onClose={() => {
               setShowModal(false);
               setIsValidate(false);
-              /* setIsCreate(false); */
-              /* setForm({
-                title: "",
-                procedure: "",
-                category: "",
-                description: "",
-              }); */
             }}
             title={`Validar expediente "${procedureData.proceeding}"`}
           >
@@ -207,7 +150,7 @@ export default function AdminProcedures() {
                   {procedureData.type === "executionMinorWorks" && " Declaración Responsable Ejecución Obras Menores"}
                   {procedureData.type === "populationRegister" && " Gestión de padrón de habitantes"}</p>
                 <p><b>Descripción:</b> {procedureData.description}</p>
-                {procedureData.file && <p><b>Archivo adjunto:</b> <a href={import.meta.env.VITE_API_URL /* 'http://localhost:3000/api/' */ + 'files/' + procedureData._id + '/' + procedureData.file.originalname} target="_blank" >{procedureData?.file?.originalname.slice(0, procedureData?.file?.originalname.lastIndexOf("."))}</a></p>}
+                {procedureData.file && <p><b>Archivo adjunto:</b> <a href={import.meta.env.VITE_API_URL + 'files/' + procedureData._id + '/' + procedureData.file.originalname} target="_blank" >{procedureData?.file?.originalname.slice(0, procedureData?.file?.originalname.lastIndexOf("."))}</a></p>}
                 {procedureData.status === "pending" && <div className="buttonsValidation">
                   <button className="btnAccepted" onClick={handleAcceptedProcedure} disabled={updateProcedure.isPending}>
                     {(updateProcedure.isPending && procedureData.status === "accepted")
@@ -221,86 +164,8 @@ export default function AdminProcedures() {
                   </button>
                 </div>}
               </div>
-              {/* <h2 className="user-form-title">{titleForm}</h2> */}
-              {/* <form onSubmit={handleSubmit} className="procedure-form">
-                <div className="form-group">
-                  <label htmlFor="register-title">Titulo</label>
-                  <input
-                    id="register-title"
-                    name="title"
-                    className="user-form-input"
-                    value={form.title}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="register-procedure">Procedimiento</label>
-                  <input
-                    id="register-procedure"
-                    name="procedure"
-                    className="user-form-input"
-                    value={form.procedure}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="register-category">Categoria</label>
-                  <input
-                    id="register-category"
-                    name="category"
-                    className="user-form-input"
-                    value={form.category}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="register-description">Descripción</label>
-                  <textarea
-                    id="register-description"
-                    name="description"
-                    className="user-form-input"
-                    value={form.description}
-                    onChange={handleChange}
-                    required
-                  />
-                </div> */}
-                {/* {isEdit && isCreate && (
-                  <button
-                    type="submit"
-                    className="advertisement-form-button"
-                    disabled={createdProcedure.isPending}
-                  >
-                    {createdProcedure.isPending
-                      ? "Creando expediente..."
-                      : "Crear anuncio"}
-                  </button>
-                )} */}
-                {/* {isValidate && (
-                  <button
-                    type="submit"
-                    className="advertisement-form-button"
-                    disabled={updateProcedure.isPending}
-                  >
-                    {updateProcedure.isPending
-                      ? "Vlidando expediente..."
-                      : "Validar expediente"}
-                  </button>
-                )}
-              </form> */}
+              
             </div>
-            {/* {createdProcedure.isError && (
-              <div className="error-message messageCreated">
-                Error al crear el anuncio: {createdProcedure.error.message}
-              </div>
-            )}
-            {createdProcedure.isSuccess && (
-              <div className="success-message messageCreated">
-                Anuncio creado correctamente
-              </div>
-            )} */}
             {updateProcedure.isError && (
               <div className="error-message messageUpdated">
                 Error al actualizar el anuncio:{" "}
@@ -315,13 +180,6 @@ export default function AdminProcedures() {
           </Modal>
 
           <div className="procedure-list-container">
-            {/* <h2 className="user-list-title">Lista de usuarios</h2> */}
-            {/* <button
-              className="procedure-create-button"
-              onClick={handleCreate}
-            >
-              + Crear nuevo anuncio
-            </button> */}
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">
@@ -341,14 +199,12 @@ export default function AdminProcedures() {
                         </tr>
                       </thead>
                       <tbody>
-                        {/* {(loading) ? <td className="isLoading">Cargando anuncios...</td> : null} */}
                         {!loading ? (
                           procedures.length !== 0 ? (
                             procedures.map((procedure) => (
                               <tr key={procedure.id || procedure._id}>
                                 <td>{procedure.title}</td>
                                 <td>{procedure.proceeding}</td>
-                                {/* <td>{procedure.procedure}</td> */}
                                 <td>
                                   {procedure.type === "claims" && "Quejas y reclamaciones"}
                                   {procedure.type === "majorWorksLicense" && "Solicitud de Licencia de Obra Mayor"}

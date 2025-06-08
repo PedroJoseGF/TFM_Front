@@ -29,10 +29,6 @@ apiClient.interceptors.response.use(
         return response;
     },
     (error) => {
-        /* if (error.response?.status === 401) {
-            localStorage.removeItem('token');
-            <Navigation to='/' />;
-        } */
         return Promise.reject(error);
     }
 );

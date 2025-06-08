@@ -7,7 +7,6 @@
 
 .notFound {
     width: 100%;
-    /* max-width: 460px; */
     border-radius: 8px;
     margin-bottom: 60px;
     color: black;
@@ -55,14 +54,6 @@
     text-align: center;
     margin-bottom: 10px;
 }
-
-/* .notFound-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0;
-} */
 
 .notFound-content li:hover {
     filter: invert(34%) sepia(75%) saturate(5832%) hue-rotate(350deg) brightness(98%) contrast(92%);

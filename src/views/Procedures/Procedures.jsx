@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from 'react';
-/* import { useMutation, useQueryClient } from '@tanstack/react-query'; */
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
@@ -58,22 +57,6 @@ const Procedures = () => {
             setTimeout(() => setCreateProcedureSuccess(false), 3000);
         });
     }
-
-    /* const createdAdvertisement = useMutation({
-        mutationFn: async (form) => {
-            form[files] = files;
-            const { data } = await apiClient.post('/procedures', form);
-            return data;
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries(['advertisements']);
-            createdAdvertisement.reset();
-            setForm({ title: '', procedure: '', proceeding: '', category: '', description: '' });
-            setIsEdit(false);
-            setIsCreate(false);
-            setShowModal(false);
-        }
-    }); */
 
     function formatFileSize(bytes) {
         if (bytes === 0) return '0 Bytes';
@@ -206,7 +189,6 @@ const Procedures = () => {
                             </strong></label>
                             <textarea id="descriptionProcedure" name="description" value={form.description} placeholder={descriptionPlaceholder} onChange={handleChangeInput} required/>
                             <label htmlFor="attachFiles"><strong>3. Adjunte un archivo si fuera necesario (opcional)</strong></label>
-                            {/* <input className="fileInput" id="attachFiles" type="file" onChange={handleChange} multiple /> */}
                             <div className="listFiles">
                                 {file && <div>
                                     <p className='titleListFiles'>Listado</p>

@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-/* import { useSelector } from "react-redux"; */
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../api/client";
@@ -20,7 +19,6 @@ const MyFolder = () => {
   const navigate = useNavigate();
 
   const { type } = useParams();
-  const [isEdit /* , setIsEdit */] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -28,20 +26,15 @@ const MyFolder = () => {
   const [width, setWidth] = useState(innerWidth);
   const [tableVertical, setTableVertical] = useState(false);
   const [procedureData, setProcedureData] = useState({title: "", proceeding: "", procedure: "", type: "", description: ""});
-  /* const user = useSelector(state => state.user.user); */
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    /* async () => { */
     setIsLoading(true);
     if (!user) {
       navigate("/login");
     }
     setIsLoading(false);
-    /* }; */
   }, [navigate, user]);
-
-  /* useEffect(() => {}); */
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -49,7 +42,6 @@ const MyFolder = () => {
       setWidth(window.innerWidth);
     };
 
-    // Agrega el manejador de eventos al detectar cambios de tamaño de ventana
     window.addEventListener("resize", handleResize);
 
     if (width < 768) {
@@ -58,13 +50,12 @@ const MyFolder = () => {
       setTableVertical(false);
     }
 
-    // Limpia el manejador de eventos al desmontar el componente (importante para evitar problemas de memoria)
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
 
-  const { data: notifications = [] /* , isLoading, error */ } = useQuery({
+  const { data: notifications = [] } = useQuery({
     queryKey: ["notifications"],
     queryFn: async () => {
       try {
@@ -93,7 +84,7 @@ const MyFolder = () => {
     },
   });
 
-  const { data: procedures = [] /* , isLoading, error */ } = useQuery({
+  const { data: procedures = [] } = useQuery({
     queryKey: ["procedures"],
     queryFn: async () => {
       try {
@@ -167,13 +158,7 @@ const MyFolder = () => {
               </div>
               <Modal
                 isOpen={showModal}
-                onClose={() => {
-                  setShowModal(false);
-                  /* setIsEdit(false);
-                                  setIsCreate(false);
-                                  setForm({ title: '', procedure: '', category: '', description: '' }); */
-                }}
-                /* title={titleForm} */
+                onClose={() => setShowModal(false)}
               ></Modal>
               {!tableVertical ? (
                 !loading ? (
@@ -543,18 +528,6 @@ const MyFolder = () => {
                     <label htmlFor="dni">DNI:</label>
                     <input type="text" id="dni" value={user.dni} disabled />
                   </div>
-                  {/* <div className="inputField">
-                    <label htmlFor="password">Contraseña:</label>
-                    <input type="password" id="password" value="pedro" disabled />
-                  </div> */}
-                  {isEdit && (
-                    <div className="inputField">
-                      <label htmlFor="passwordConfirmation">
-                        Confirmación de Contraseña:
-                      </label>
-                      <input type="text" id="passwordConfirmation" />
-                    </div>
-                  )}
                 </div>
               </div>
               {user.role === "admin" && (

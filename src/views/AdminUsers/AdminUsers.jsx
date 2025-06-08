@@ -2,10 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
-/* import axios from 'axios'; */
 import apiClient from "../../api/client";
 import arrow from "../../assets/flecha-correcta.png";
-/* import advertisements from '../../assets/advertisements.png'; */
 import Modal from "../../components/Modal/Modal";
 import { Link } from "react-router-dom";
 import "./AdminUsers.css";
@@ -15,7 +13,6 @@ export default function AdminUsers() {
   const queryClient = useQueryClient();
 
   const [form, setForm] = useState({ name: "", surname: "", email: "", dni: "", role: "user", password: "123456", enabled: true });
-  const [filters, setFilters] = useState({ name: "", email: "", dni: "", enabled: "" });
   const [showModal, setShowModal] = useState(false);
   const [titleForm, setTitleForm] = useState("Crear usuario");
   const [isEdit, setIsEdit] = useState(false);
@@ -29,22 +26,16 @@ export default function AdminUsers() {
   const {user} = useContext(UserContext);
 
   useEffect(() => {
-    /* async () => { */
-      setIsLoading(true);
-      if (!user) {
-        navigate("/login");
-      } else {
-        if(user.role !== 'admin') {
-          navigate("/notfound");
-        }
+    setIsLoading(true);
+    if (!user) {
+      navigate("/login");
+    } else {
+      if(user.role !== 'admin') {
+        navigate("/notfound");
       }
-      setIsLoading(false);
-    /* }; */
+    }
+    setIsLoading(false);
   }, [navigate, user]);
-
-  useEffect(() => {
-      queryClient.invalidateQueries(["users"]);
-  }, [filters, queryClient]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -52,7 +43,6 @@ export default function AdminUsers() {
       setWidth(window.innerWidth);
     };
 
-    // Agrega el manejador de eventos al detectar cambios de tamaño de ventana
     window.addEventListener("resize", handleResize);
 
     if (width < 768) {
@@ -60,24 +50,18 @@ export default function AdminUsers() {
     } else {
       setTableVertical(false);
     }
-
-    // Limpia el manejador de eventos al desmontar el componente (importante para evitar problemas de memoria)
+    
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
 
-  const { data: users = [] /* isLoading, error */ } = useQuery({
+  const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       try {
         setLoading(true);
-        let response = null;
-        if(filters) {
-          response = await apiClient.post("/users/search", filters);
-        } else {
-        response = await apiClient.get("/users");
-        }
+        const response = await apiClient.get("/users");
         setLoading(false);
         return response.data;
       } catch (error) {
@@ -113,12 +97,8 @@ export default function AdminUsers() {
 
   const updatedUser = useMutation({
     mutationFn: async (user) => {
-      /* try { */
         const { data } = await apiClient.put(`/users/${user._id}`, user);
         return data;
-      /* } catch (error) {
-        error.data
-      } */
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["users"]);
@@ -158,7 +138,6 @@ export default function AdminUsers() {
   };
 
   const handleEdit = (user) => {
-    /* window.scrollTo(0, 0); */
     setIsEdit(true);
     setShowModal(true);
     setTitleForm("Actualizar usuario");
@@ -167,8 +146,6 @@ export default function AdminUsers() {
 
   const handleChange = (e) => {
     if(e.target.name === 'enabled') {
-      /* let enabled = true;
-      e.target.checkedh === "on" ? enabled = false : enabled = true; */
       setForm({ ...form, [e.target.name]: e.target.checked });
     } else {
       setForm({ ...form, [e.target.name]: e.target.value });
@@ -190,45 +167,9 @@ export default function AdminUsers() {
     }
     setIsEdit(false);
     setSendingWelcomeEmail(false);
-    /* const url = "http://localhost:3000/api/email/sendWelcomeEmail";
-    const formData = new FormData();
-    formData.append("name", user.name)
-    formData.append("surname" , user.surname);
-    formData.append("email", user.email);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    };
-    axios.post(url, formData, config).then((response) => {
-      setMessageWelcomeEmail(response.message);
-      setTimeout(() => setMessageWelcomeEmail(null), 3000);
-      setLoading(false);
-    }); */
-  };
-
-  /* const handleChangeFilters = (e) => {
-    if(e.target.name === 'enabled') {
-      setForm({ ...form, [e.target.name]: e.target.checked });
-    } else {
-      setForm({ ...form, [e.target.name]: e.target.value });
-    }
-  }; */
-
-  const filterUsers = (e) => {
-      if(e.target.name === 'filter-enabled' || e.target.name === 'filter-enabled') {
-        setFilters({ ...filters, [e.target.name]: e.target.checked });
-      } else {
-        setFilters({ ...filters, [e.target.name]: e.target.value });
-      }
-
-      queryClient.invalidateQueries(["users"]);
   };
 
   if (isLoading) return <>Cargando...</>;
-
-  /* if (isLoading) return <div className="isLoading">Cargando usuarios...</div>; */
-  /* if (error) return <div className="error">Error al cargar usuarios...</div>; */
 
   return (
     <div className="adminUsersView">
@@ -244,7 +185,6 @@ export default function AdminUsers() {
       <div className="adminUsers-container">
         <div className="adminUsers-content">
           <div className="title-adminUsers">
-            {/* <img src={advertisements} alt="Administrador de Usuarios" /> */}
             <h1>Administrador de usuarios</h1>
           </div>
           <Modal
@@ -266,7 +206,6 @@ export default function AdminUsers() {
             title={titleForm}
           >
             <div className="user-form-container">
-              {/* <h2 className="user-form-title">{titleForm}</h2> */}
               <form onSubmit={handleSubmit} className="user-form">
                 <div className="form-group">
                   <label htmlFor="register-name">Nombre</label>
@@ -276,6 +215,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     value={form.name}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                     required
                   />
                 </div>
@@ -287,6 +227,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     value={form.surname}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                     required
                   />
                 </div>
@@ -299,6 +240,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     value={form.email}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                     required
                   />
                 </div>
@@ -310,6 +252,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     value={form.dni}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                     required
                   />
                 </div>
@@ -321,6 +264,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     value={form.role}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                     required
                   >
                     <option value="admin">Administrador</option>
@@ -336,6 +280,7 @@ export default function AdminUsers() {
                     className="user-form-input"
                     checked={form.enabled}
                     onChange={handleChange}
+                    disabled={createdUser.isPending || updatedUser.isPending}
                   />
                 </div>
                 {isEdit && isCreate && (
@@ -385,39 +330,9 @@ export default function AdminUsers() {
           </Modal>
 
           <div className="user-list-container">
-            {/* <h2 className="user-list-title">Lista de usuarios</h2> */}
             <button className="user-create-button" onClick={handleCreate} disabled={loading}>
               + Crear nuevo usuario
             </button>
-            <div className="filters">
-              <div className="fields-group">
-                <div className="filter-group">
-                  <div className="filter-field">
-                    <label htmlFor="filter-name">Nombre:</label>
-                    <input type="text" id="filter-name" name="name" className="fieldFilter" value={filters.name} onChange={filterUsers} placeholder="Nombre" />
-                  </div>
-                  <div className="filter-field">
-                    <label htmlFor="filter-email">Email:</label>
-                    <input type="text" id="filter-email" name="email" className="fieldFilter" value={filters.email} onChange={filterUsers} placeholder="Email" />
-                  </div>
-                </div>
-                <div className="filter-group">
-                  <div className="filter-field">
-                    <label htmlFor="filter-dni">Dni:</label>
-                    <input type="text" id="filter-dni" name="dni" className="fieldFilter" value={filters.dni} onChange={filterUsers} placeholder="Dni" />
-                  </div>
-                  <div className="filter-field">
-                    <label htmlFor="filter-enabled">Habilitado:</label>
-                    <input type="checkbox" id="filter-dni" name="filter-enabled" className="fieldFilter" onChange={filterUsers} placeholder="Dni" checked/>
-                    <label htmlFor="filter-disabled">Deshabilitado:</label>
-                    <input type="checkbox" id="filter-dni" name="filter-disabled" className="fieldFilter" onChange={filterUsers} placeholder="Dni" checked/>
-                  </div>
-                </div>
-              </div>
-              <div className="buttons-group">
-                <button>Limpiar filtros</button>
-              </div>
-            </div>
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">
@@ -430,10 +345,8 @@ export default function AdminUsers() {
                         <thead>
                           <tr>
                             <th>Nombre Completo</th>
-                            {/* <th>Apellidos</th> */}
                             <th>Email</th>
                             <th>DNI</th>
-                            {/* <th>Rol</th> */}
                             <th>Acciones</th>
                           </tr>
                         </thead>

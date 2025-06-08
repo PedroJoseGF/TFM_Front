@@ -1,29 +1,12 @@
-/* .isLoading, .error {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: black;
-}
-
-.error {
-    justify-content: left;
-    padding-left: 15px;
-} */
-
 .adminProcedures-content {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     color: black;
 }
 
 .adminProcedures-content h1 {
     font-size: 28px;
-    /* margin-bottom: 15px; */
-    /* width: 100vw; */
 }
 
 .adminProcedures-content h2 {
@@ -198,22 +181,13 @@
     box-shadow: 5px 5px 5px 3px #dcdcdc;
 }
 
-/* .roleUser {
-    background-color: dodgerblue;
-    padding: 3px;
-    border-radius: 8px;
-} */
-
 .table-actions {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .table-actions button {
     margin: 5px;
-    /* width: 50px; */
 }
 
 .table-actions .validate {

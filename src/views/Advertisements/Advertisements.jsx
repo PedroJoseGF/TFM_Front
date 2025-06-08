@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { useQuery, /* useMutation, useQueryClient */ } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import apiClient from '../../api/client';
-
 import arrow from '../../assets/flecha-correcta.png';
 import advertisementsLogo from '../../assets/advertisements.png';
 import Menu from '../../components/Menu/Menu';
@@ -9,7 +8,6 @@ import { Link } from 'react-router-dom';
 import './Advertisements.css';
 
 const Advertisements = () => {
-    /* const queryClient = useQueryClient(); */
     const [loading, setLoading] = useState(false);
     const [limit, setLimit] = useState(3);
     const [width, setWidth] = useState(innerWidth);
@@ -21,7 +19,6 @@ const Advertisements = () => {
         setWidth(window.innerWidth);
       };
 
-      // Agrega el manejador de eventos al detectar cambios de tamaño de ventana
       window.addEventListener('resize', handleResize);
 
       if(width < 768) {
@@ -30,13 +27,12 @@ const Advertisements = () => {
         setTableVertical(false);
       }
 
-      // Limpia el manejador de eventos al desmontar el componente (importante para evitar problemas de memoria)
       return () => {
         window.removeEventListener('resize', handleResize);
       };
     }, [width]);
 
-    const { data: advertisements = []/* , isLoading, error */ } = useQuery({
+    const { data: advertisements = [] } = useQuery({
         queryKey: ["advertisements"],
         queryFn: async () => {
             try {
@@ -62,7 +58,7 @@ const Advertisements = () => {
 
     return (
       <div className="advertisementsView">
-        <Menu active="advertisements"></Menu>
+        <Menu active="advertisements" />
         <div className="menuAdvertisements">
           <Link to="/">Inicio</Link>
           <img src={arrow} alt="" />
@@ -99,39 +95,6 @@ const Advertisements = () => {
                             <td>{advertisement.createdAt}</td>
                         </tr>
                       ))}
-                    {/* <tr>
-                      <td data-label="Documento">DECRETO 2025-0216 [DECRETO DE ALCALDIA]</td>
-                      <td data-label="Expediente">68/2025</td>
-                      <td data-label="Procedimiento">Selecciones de personal y provisiones de puestos</td>
-                      <td data-label="Categoría">Empleo público</td>
-                      <td data-label="Estado">
-                        DECRETO DE ALCALDIA APROBACION ORDEN DE LLAMAMIENTO DE
-                        ALBAÑILES OFICIALES DE 1ª DEL PLAN ESPECIAL DE EMPLEO 2025.
-                      </td>
-                      <td data-label="Fecha notificada">21/05/2025</td>
-                    </tr>
-                    <tr>
-                      <td>ANUNCIO INFORMACION PUBLICA</td>
-                      <td>63/2025</td>
-                      <td>Declaraciones Responsables o Comunicaciones Urbanísticas</td>
-                      <td>Anuncios</td>
-                      <td>
-                        Informacion pública sobre calificación ambiental de la
-                        actividad ESTABLECIMIENTO DESTINADO A BOCATERÍA Y VENTA DE CHUCHERÍAS.
-                      </td>
-                      <td>14/05/2025</td>
-                    </tr>
-                    <tr>
-                      <td>DECRETO 2025-0219 [DECRETO LISTA DEFINITIVA]</td>
-                      <td>61/2025</td>
-                      <td>Selecciones de Personal y Provisiones de Puestos</td>
-                      <td>Empleo público</td>
-                      <td>
-                        DECRETO APROBACION LISTA DEFINITIVA MONITORES PROGRAMA
-                        CONCILIA EN VERANO 2025.
-                      </td>
-                      <td>12/05/2025</td>
-                    </tr> */}
                   </tbody>
                 </table>
                 {advertisements.length >= limit && <button className="btnMore" onClick={moreAdvertisements}>Mostrar más</button>}
@@ -152,10 +115,6 @@ const Advertisements = () => {
                             <th>Título</th>
                             <td>{advertisement.title}</td>
                           </tr>
-                          {/* <tr>
-                            <th>Apellidos</th>
-                            <td>{user.surname}</td>
-                          </tr> */}
                           <tr>
                             <th>EXPEDIENTE</th>
                             <td>{advertisement.proceeding}</td>

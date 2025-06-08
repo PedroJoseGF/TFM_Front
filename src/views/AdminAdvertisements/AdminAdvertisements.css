@@ -1,29 +1,12 @@
-/* .isLoading, .error {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: black;
-}
-
-.error {
-    justify-content: left;
-    padding-left: 15px;
-} */
-
 .adminAdvertisements-content {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     color: black;
 }
 
 .adminAdvertisements-content h1 {
     font-size: 28px;
-    /* margin-bottom: 15px; */
-    /* width: 100vw; */
 }
 
 .adminAdvertisements-content h2 {
@@ -162,22 +145,13 @@
     padding-left: 5px;
 }
 
-/* .roleUser {
-    background-color: dodgerblue;
-    padding: 3px;
-    border-radius: 8px;
-} */
-
 .table-actions {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .table-actions button {
     margin: 5px;
-    /* width: 50px; */
 }
 
 .table-actions .edit {

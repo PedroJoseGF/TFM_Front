@@ -1,25 +1,12 @@
-/* .isLoading, .error {
-    margin-top: 20px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    color: black;
-} */
-
 .adminUsers-content {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     color: black;
 }
 
 .adminUsers-content h1 {
     font-size: 28px;
-    /* margin-bottom: 15px; */
-    /* width: 100vw; */
 }
 
 .adminUsers-content h2 {
@@ -31,49 +18,6 @@
 
 .user-list-container .version-mobile {
     width: 90dvw;
-}
-
-.filters {
-    display: flex;
-    justify-content: space-between;
-    background-color: #fff;
-    padding: 10px;
-    margin: 15px 0px;
-    width: 100%;
-}
-
-.buttons-group {
-    display: flex;
-}
-
-.buttons-group button {
-    background-color: #696969;
-    margin-left: 10px;
-}
-
-.filter-group {
-    display: flex;
-    justify-content: space-between;
-    gap: 35px;
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-
-.filter-field {
-    display: flex;
-    gap: 10px;
-}
-
-.filter-group input {
-    background-color: #fff;
-    color: #000;
-}
-
-.filter-group input:-webkit-autofill,
-.filter-group input:-webkit-autofill:hover, 
-.filter-group input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #000;
-    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
 
 .user-form-container {
@@ -231,13 +175,10 @@
 .table-actions {
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
 }
 
 .table-actions button {
     margin: 5px;
-    /* width: 50px; */
 }
 
 .table-actions .edit {
@@ -252,16 +193,12 @@
         background-color: midnightblue;
 }
 
-/* .version-mobile .isLoading {
-} */
-
 .version-mobile th {
     width: 25%;
     font-size: 20px;
 }
 
 .version-mobile td {
-    /* width: 50%; */
     font-size: 16px;
 }
 
@@ -272,11 +209,6 @@
 .version-mobile .table-actions th {
     padding-bottom: 0;
 }
-
-/* .version-mobile .table-actions td {
-    display: flex;
-    justify-content: center;
-} */
 
 .adminUsers-content .success-message {
     position: absolute;
@@ -312,8 +244,6 @@
     }
 
     .user-table .table-actions {
-        /* flex-direction: row; */
-        /* justify-content: center; */
         align-items: center;
     }
 

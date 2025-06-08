@@ -31,6 +31,7 @@ function App() {
               <Route path="/myfolder/profile/admin-users" element={<AdminUsers />} />
               <Route path="/myfolder/profile/admin-advertisements" element={<AdminAdvertisements />} />
               <Route path="/myfolder/profile/admin-procedures" element={<AdminProcedures />} />
+              <Route path="/restore-password/:id" element={<RestorePassword />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

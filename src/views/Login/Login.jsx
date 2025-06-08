@@ -1,12 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-/* import { useDispatch, useSelector } from "react-redux"; */
-/* import { setUser } from  '../../slices/userSlice'; */
 import { UserContext } from '../../context/userContext';
 import { useMutation } from '@tanstack/react-query';
 import apiClient from '../../api/client';
 import { useNavigate } from "react-router-dom";
-import Modal from '../../components/Modal/Modal';
-import { Link } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
@@ -19,8 +15,6 @@ const Login = () => {
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState('Usuario bloqueado');
     const {user, setUser} = useContext(UserContext);
-    /* const user = useSelector(state => state.user.user);
-    const dispath = useDispatch(); */
 
     useEffect(() => {
             document.cookie = "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
@@ -42,7 +36,6 @@ const Login = () => {
                 setLoading(true);
                 const { data } = await apiClient.post(`/auth/login`, user);
                 setError(null);
-                /* dispath(setUser(data.user)) */
                 setUser(data.user);
                 setLoading(false);
                 setLoginSuccess(true);

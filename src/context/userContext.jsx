@@ -8,22 +8,21 @@ export const UserContext = createContext();
 export const UserProvider = ({children}) => {
     const [user, setUser] = useState(null);
 
-    const { data: userData, isLoading/* , error */ } = useQuery({
+    const { data: userData, isLoading } = useQuery({
         queryKey: ["verifyAuthenticated"],
         queryFn: async () => {
             try {
                 const response = await apiClient.get('/auth/verifyAuthenticated');
                 setUser(response.data.user);
                 return response.data;
-            } catch /* (error) */ {
+            } catch {
                 setUser(null);
-                /* console.error('Error fetching usuarios:', error); */
                 return [];
             }
         }
     });
 
-    if (isLoading) return <div className="isLoading">{/* Cargando... */}</div>;
+    if (isLoading) return <div className="isLoading">{}</div>;
 
     return (
         <UserContext.Provider value={{user, setUser, userData}}>

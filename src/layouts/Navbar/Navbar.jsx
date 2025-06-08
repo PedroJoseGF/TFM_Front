@@ -12,7 +12,6 @@ const Navbar = () => {
     const logout = () => {
         setUser(null);
         document.cookie = "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        /* window.location.href = '/'; */
         navigate("/");
     };
 
@@ -36,18 +35,6 @@ const Navbar = () => {
                         <Link to="/login">Login</Link>
                     </div>
                 }
-
-               {/*  <ul className="navbar-menu">
-                    <li>
-                        <Link to='/login'>INICIO</Link>
-                    </li>
-                    <li>
-                        <Link to='/admin-users'>NOSOTROS</Link>
-                    </li>
-                    <li>
-                        <Link to='/admin-advertisements'>CONTACTO</Link>
-                    </li>
-                </ul> */}
             </div>
         </nav>
     );

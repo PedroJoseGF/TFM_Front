@@ -5,7 +5,6 @@
 
 .advertisements-container {
     display: flex;
-    /* justify-content: center; */
     text-align: start;
     margin: 10px;
     margin-left: 20px;
@@ -94,10 +93,6 @@
     padding-left: 10px;
 }
 
-/* .advertisements-table tbody td:last-child {
-    text-align: right;
-} */
-
 .advertisements-table th {
     color: black;
     text-align: left;
@@ -129,7 +124,6 @@
 }
 
 .version-mobile td {
-    /* width: 50%; */
     font-size: 16px;
 }
 
@@ -144,7 +138,6 @@
 @media (min-width: 768px) {
     .advertisementsView {
         width: 100%;
-        /* padding: 0 20px; */
     }
 
     .advertisements-container .isLoading {
@@ -158,11 +151,6 @@
     .advertisements-table td {
         font-size: 14px;
     }
-
-    /* .btnMore {
-        font-size: 15px;
-        width: 125px;
-    } */
 
     .advertisementsView .info-menu .menu {
         padding-top: 10px;
@@ -182,27 +170,16 @@
         top: 50px;
         position: absolute;
     }
-
-    /* .advertisement-container .isLoading {
-        margin-top: 20px;
-        justify-content: left;
-    } */
 }
 
 @media (min-width: 1280px) {
     .advertisementsView {
         width: 100%;
-        /* padding: 0 30px; */
     }
 
     .advertisements-container {
         margin: 0 20px;
     }
-
-    /* .advertisement-container .isLoading {
-        margin-top: 20px;
-        justify-content: left;
-    } */
     
     .advertisements-table {
         margin: 15px 0 35px 0;

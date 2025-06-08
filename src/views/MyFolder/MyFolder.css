@@ -58,14 +58,6 @@ thead td:first-child {
     text-align: center;
 }
 
-/* tbody td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding-right: 4px;
-} */
-
 tbody td .status {
     padding: 3px 6px;
     text-align: center;
@@ -106,7 +98,6 @@ td {
 .titleProcedure {
     font-weight: 600;
     cursor: pointer;
-    /* color: #646cff; */
 }
 
 .statusNotification {
@@ -161,7 +152,6 @@ td {
 
 .profile label {
     color: #000;
-    /* margin: 15px 0 15px 30px; */
 }
 
 .profile input {
@@ -212,7 +202,6 @@ td {
 @media (min-width: 768px) {
     .myFolderView {
         width: 100%;
-        /* padding: 0 20px; */
     }
 
     .myFolderView .info-menu .menu {
@@ -237,11 +226,6 @@ td {
     .myFolder-container .mailbox, .myFolder-container .proceedings {
         margin: 0 10px;
     }
-
-    /* .myFolder-container .proceedings .modal-title {
-        text-align: center;
-        font-size: 35px;
-    } */
     
     table {
         margin: 25px 0 35px 0;
@@ -290,7 +274,6 @@ td {
 @media (min-width: 1280px) {
     .myFolderView {
         width: 100%;
-        /* padding: 0 30px; */
     }
     
     .myFolder-section {
@@ -308,10 +291,6 @@ td {
     td {
         font-size: 16px;
     }
-    
-    /* .btnMore {
-        margin-bottom: 20px;
-    } */
 
     .profile input {
         width: 75%;

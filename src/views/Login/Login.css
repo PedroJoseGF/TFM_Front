@@ -68,7 +68,6 @@
 
 .loginError {
     position: absolute;
-    /* bottom: 0; */
     bottom: 85px;
     color: #000;
     background-color: #f35151b4;
