@@ -1,0 +1,226 @@
+/* .isLoading, .error {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: black;
+}
+
+.error {
+    justify-content: left;
+    padding-left: 15px;
+} */
+
+.adminAdvertisements-content {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    color: black;
+}
+
+.adminAdvertisements-content h1 {
+    font-size: 28px;
+    /* margin-bottom: 15px; */
+    /* width: 100vw; */
+}
+
+.adminAdvertisements-content h2 {
+    margin: 5px;
+    font-size: 30px;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.advertisement-form-container {
+    background-color: #eee;
+    width: -webkit-fill-available;
+    margin: 15px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.advertisement-form-title {
+    text-align: center;
+}
+
+.advertisement-form {
+    width: -webkit-fill-available;
+}
+
+.advertisement-form button {
+    background-color: #f02424;
+    margin: 15px;
+    width: 75%;
+}
+
+.advertisement-form-container .form-group {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-group label {
+    margin-right: 15px;
+}
+
+.advertisement-form-container input {
+    background-color: #fff;
+    width: 65%;
+    color: black;
+    padding: 8px;
+}
+
+.advertisement-form-container textarea {
+    background-color: #fff;
+    width: 75%;
+    color: black;
+    border-radius: 8px;
+    padding: 8px;
+    height: 100px;
+}
+
+.advertisement-form-container input:-webkit-autofill,
+.advertisement-form-container input:-webkit-autofill:hover, 
+.advertisement-form-container input:-webkit-autofill:focus {
+    -webkit-text-fill-color: black;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.messageCreated {
+    padding: 30px 10px;
+    border-radius: 15px;
+    width: 42%;
+    border: 1px solid;
+    box-shadow: 5px 5px 5px 3px #dcdcdc;
+}
+
+.success-message {
+    background-color: #7fffe3;
+}
+
+.error-message {
+    background-color: #fa6060;
+}
+
+.advertisement-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 90dvw;
+    margin-top: 15px;
+}
+
+.advertisement-create-button {
+    background-color: #f02424;
+}
+
+.advertisement-list-container h2 {
+    font-size: 35px;
+}
+
+.table-container {
+    width: 100%;
+}
+
+.table-container th {
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 15px;
+}
+
+.advertisement-table {
+    width: 90dvw;
+}
+
+.advertisement-table .isLoading {
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.advertisement-table th:first-child {
+    padding-left: 10px;
+}
+
+.advertisement-table th:last-child {
+    padding-left: 5px;
+}
+
+.advertisement-table td {
+    text-align: left;
+    font-size: 10px;
+    padding-right: 5px;
+}
+
+.advertisement-table td:first-child {
+    padding-left: 10px;
+}
+
+.advertisement-table td:last-child {
+    padding-left: 5px;
+}
+
+/* .roleUser {
+    background-color: dodgerblue;
+    padding: 3px;
+    border-radius: 8px;
+} */
+
+.table-actions {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.table-actions button {
+    margin: 5px;
+    /* width: 50px; */
+}
+
+.table-actions .edit {
+    background-color: dodgerblue;
+}
+
+.table-actions .delete {
+    background-color: crimson;
+}
+
+
+@media (min-width: 768px) {
+    .adminAdvertisements-content h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 20px;
+    }
+
+    .advertisement-list-container {
+        align-items: end;
+    }
+
+    .table-container th {
+        font-size: 20px;
+    }
+    
+    .table-container th:last-child {
+        text-align: center;
+    }
+
+    .advertisement-table td {
+        font-size: 16px !important;
+    }
+
+    .table-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .table-actions button {
+        margin: 5px 10px;
+    }          
+}
