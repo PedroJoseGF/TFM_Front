@@ -142,9 +142,10 @@
     font-size: 12px;
 }
 
-.moreAnnouns {
+button {
     margin-bottom: 10px;
     background-color: #f02424;
+    color: #fff;
 }
 
 @media (min-width: 768px) {

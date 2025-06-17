@@ -11,6 +11,13 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(async(config) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     config.withCredentials = true;
+    const token = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
 });
 
