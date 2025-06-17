@@ -15,9 +15,11 @@ apiClient.interceptors.request.use(async(config) => {
     .split("; ")
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
+    console.log(token);
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
+    console.log(config);
     return config;
 });
 
