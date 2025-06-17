@@ -17,7 +17,7 @@ apiClient.interceptors.request.use(async(config) => {
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
     console.log(token);
-    console.log(token2.get('token'));
+    console.log(token2);
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
