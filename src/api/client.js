@@ -11,11 +11,13 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(async(config) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     config.withCredentials = true;
+    const token2 = new Cookies();
     const token = document.cookie
     .split("; ")
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
     console.log(token);
+    console.log(token2.get('token'));
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
