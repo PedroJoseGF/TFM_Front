@@ -8,7 +8,7 @@ import arrow from "../../assets/flecha-correcta.png";
 import mailLogo from "../../assets/mailbox.png";
 import myFilesLogo from "../../assets/myFiles.png";
 import profileLogo from "../../assets/profile.png";
-import advertisementsLogo from "../../assets/advertisements.png";
+import AnnouncementsLogo from "../../assets/Announcements.png";
 import procedureLogo from "../../assets/procedure.png";
 import Modal from "../../components/Modal/Modal";
 import Menu from "../../components/Menu/Menu";
@@ -128,7 +128,7 @@ const MyFolder = () => {
     },
   });
 
-  const moreAdvertisements = () => {
+  const moreAnnouncements = () => {
     setLimit(limit + 3);
   };
 
@@ -246,10 +246,10 @@ const MyFolder = () => {
                                     </tr> */}
                           </tbody>
                         </table>
-                        {notifications.length >= limit && (
+                        {notifications.length > limit && (
                           <button
                             className="btnMore"
-                            onClick={moreAdvertisements}
+                            onClick={moreAnnouncements}
                           >
                             Mostrar más
                           </button>
@@ -309,10 +309,10 @@ const MyFolder = () => {
                           </tbody>
                         </table>
                       ))}
-                      {notifications.length >= limit && (
+                      {notifications.length > limit && (
                         <button
                           className="btnMore"
-                          onClick={moreAdvertisements}
+                          onClick={moreAnnouncements}
                         >
                           Mostrar más
                         </button>
@@ -416,8 +416,8 @@ const MyFolder = () => {
                         ))}
                       </tbody>
                     </table>
-                    {procedures.length >= limit && 
-                      <button className="btnMore" onClick={moreAdvertisements}>
+                    {procedures.length > limit && 
+                      <button className="btnMore" onClick={moreAnnouncements}>
                         Mostrar más
                       </button>
                     }
@@ -484,8 +484,8 @@ const MyFolder = () => {
                     </tbody>
                     </table>
                   ))}
-                  {procedures.length >= limit && 
-                    <button className="btnMore" onClick={moreAdvertisements}>
+                  {procedures.length > limit && 
+                    <button className="btnMore" onClick={moreAnnouncements}>
                       Mostrar más
                     </button>
                   }
@@ -535,7 +535,7 @@ const MyFolder = () => {
                   <h2>Panel de control</h2>
                   <div className="buttonsAdmin">
                     <button onClick={() => navigate(`/myfolder/${type}/admin-users`)}><img src={profileLogo}></img>Admin. Usuarios</button>
-                    <button onClick={() => navigate(`/myfolder/${type}/admin-advertisements`)}><img src={advertisementsLogo}></img>Admin. Anuncios</button>
+                    <button onClick={() => navigate(`/myfolder/${type}/admin-announcements`)}><img src={AnnouncementsLogo}></img>Admin. Anuncios</button>
                     <button onClick={() => navigate(`/myfolder/${type}/admin-procedures`)}><img src={procedureLogo}></img>Admin. Expedientes</button>
                   </div>
                 </div>

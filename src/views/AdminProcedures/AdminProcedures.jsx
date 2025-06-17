@@ -13,6 +13,7 @@ export default function AdminProcedures() {
   const queryClient = useQueryClient();
 
   const [procedureData, setProcedureData] = useState({title: "", proceeding: "", procedure: "", type: "", description: ""});
+  const [filters, setFilters] = useState({ title: "", proceeding: "", type: "", status: "" });
   const [showModal, setShowModal] = useState(false);
   const [isValidate, setIsValidate] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +58,12 @@ export default function AdminProcedures() {
     queryFn: async () => {
       try {
         setLoading(true);
-        const response = await apiClient.get("/procedures");
+        let response = null;
+        if (filters) {
+          response = await apiClient.post("/procedures/search", filters);
+        } else {
+          response = await apiClient.get("/procedures");
+        }
         setLoading(false);
         return response.data;
       } catch (error) {
@@ -114,7 +120,19 @@ export default function AdminProcedures() {
     updateProcedure.mutate(procedureData);
   };
 
-  if (isLoading) return <>Cargando...</>;
+  const filterProcedures = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    queryClient.invalidateQueries(["announcements"]);
+  }, [filters, queryClient]);
+
+  const clearFilters = () => {
+    setFilters({ title: "", proceeding: "", type: "", status: "" });
+  };
+
+  if (isLoading) return <div>Cargando...</div>;
 
   return (
     <div className="adminProcedureView">
@@ -125,7 +143,7 @@ export default function AdminProcedures() {
         <img src={arrow} alt="" />
         <Link to={`/myfolder/profile`}>Mis datos</Link>
         <img src={arrow} alt="" />
-        <Link to={`/admin-procedures`}>Admin. de Expedientes</Link>
+        <Link to={`/myfolder/profile/admin-procedures`}>Admin. de Expedientes</Link>
       </div>
       <div className="admiProcedures-container">
         <div className="adminProcedures-content">
@@ -180,6 +198,72 @@ export default function AdminProcedures() {
           </Modal>
 
           <div className="procedure-list-container">
+            {(!loading && procedures.length !== 0) && (
+              <div className="filters">
+                <div className="fields-group">
+                  <div className="filter-group">
+                    <div className="filter-field">
+                      <input
+                        type="text"
+                        id="filter-title"
+                        name="title"
+                        className="fieldFilter"
+                        value={filters.title}
+                        onChange={filterProcedures}
+                        placeholder="Título"
+                      />
+                    </div>
+                    <div className="filter-field">
+                      <input
+                        type="text"
+                        id="filter-proceeding"
+                        name="proceeding"
+                        className="fieldFilter"
+                        value={filters.proceeding}
+                        onChange={filterProcedures}
+                        placeholder="Expediente"
+                      />
+                    </div>
+                    <div className="filter-field">
+                      <select
+                        id="filter-procedure"
+                        name="type"
+                        className="fieldFilter"
+                        value={filters.type}
+                        onChange={filterProcedures}
+                        required
+                      >
+                        <option value="">...</option>
+                        <option value="claims">Quejas y reclamaciones</option>
+                        <option value="majorWorksLicense">Solicitud de Licencia de Obra Mayor</option>
+                        <option value="executionMinorWorks">Declaración Responsable Ejecución Obras Menores</option>
+                        <option value="populationRegister">Gestión de padrón de habitantes</option>
+                      </select>
+                    </div>
+                    <div className="filter-field">
+                      <select
+                        id="filter-status"
+                        name="status"
+                        className="fieldFilter"
+                        value={filters.status}
+                        onChange={filterProcedures}
+                        required
+                      >
+                        <option value="">...</option>
+                        <option value="pending">Pendiente</option>
+                        <option value="rejected">Rechazado</option>
+                        <option value="accepted">Aceptado</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="buttons-group">
+                  <button onClick={clearFilters} disabled={loading}>
+                    Limpiar filtros
+                  </button>
+                </div>
+              </div>
+            )}
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">
@@ -187,91 +271,89 @@ export default function AdminProcedures() {
                     <div className="isLoading">Cargando expedientes...</div>
                   ) : null}
                   {!loading && (
-                    <table className="procedure-table">
-                      <thead>
-                        <tr>
-                          <th>Título</th>
-                          <th>Expediente</th>
-                          <th>Procedimiento</th>
-                          <th>Descripción</th>
-                          <th>Estado</th>
-                          <th>Acciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {!loading ? (
-                          procedures.length !== 0 ? (
-                            procedures.map((procedure) => (
-                              <tr key={procedure.id || procedure._id}>
-                                <td>{procedure.title}</td>
-                                <td>{procedure.proceeding}</td>
-                                <td>
-                                  {procedure.type === "claims" && "Quejas y reclamaciones"}
-                                  {procedure.type === "majorWorksLicense" && "Solicitud de Licencia de Obra Mayor"}
-                                  {procedure.type === "executionMinorWorks" && "Declaración Responsable Ejecución Obras Menores"}
-                                  {procedure.type === "populationRegister" && "Gestión de padrón de habitantes"}
-                                </td>
-                                <td>{procedure.description}</td>
-                                <td>
-                                  {procedure.status === "pending" ? (
-                                    <p className="statusNotification pending">
-                                      Pendiente
-                                    </p>
-                                  ) : procedure.status === 'accepted' ? (
-                                    <p className="statusNotification accepted">
-                                      Aceptada
-                                    </p>
-                                  ): (
-                                    <p className="statusNotification rejected">
-                                      Rechazada
-                                    </p>
-                                  )}
-                                </td>
-                                <td>
-                                  <div className="table-actions">
-                                    {procedure.status === "pending" ? 
-                                      <button
-                                        className="action-button validate"
-                                        onClick={() => handleValidate(procedure)}
-                                        disabled={isValidate}
-                                      >
-                                        Validar
-                                      </button>
-                                    :
-                                      <button
-                                          className="action-button view"
-                                          onClick={() => handleValidate(procedure)}
-                                          disabled={isValidate}
-                                        >
-                                          Ver
-                                        </button>
-                                      }
+                    procedures.length !== 0 ? (
+                      <table className="procedure-table">
+                        <thead>
+                          <tr>
+                            <th>Título</th>
+                            <th>Expediente</th>
+                            <th>Procedimiento</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {procedures.map((procedure) => (
+                            <tr key={procedure.id || procedure._id}>
+                              <td>{procedure.title}</td>
+                              <td>{procedure.proceeding}</td>
+                              <td>
+                                {procedure.type === "claims" && "Quejas y reclamaciones"}
+                                {procedure.type === "majorWorksLicense" && "Solicitud de Licencia de Obra Mayor"}
+                                {procedure.type === "executionMinorWorks" && "Declaración Responsable Ejecución Obras Menores"}
+                                {procedure.type === "populationRegister" && "Gestión de padrón de habitantes"}
+                              </td>
+                              <td>{procedure.description}</td>
+                              <td>
+                                {procedure.status === "pending" ? (
+                                  <p className="statusNotification pending">
+                                    Pendiente
+                                  </p>
+                                ) : procedure.status === 'accepted' ? (
+                                  <p className="statusNotification accepted">
+                                    Aceptado
+                                  </p>
+                                ) : (
+                                  <p className="statusNotification rejected">
+                                    Rechazado
+                                  </p>
+                                )}
+                              </td>
+                              <td>
+                                <div className="table-actions">
+                                  {procedure.status === "pending" ? 
                                     <button
-                                      className="action-button delete"
-                                      onClick={() =>
-                                        deleteProcedure.mutate(
-                                          procedure._id || procedure.id
-                                        )
-                                      }
-                                      disabled={
-                                        deleteProcedure.isLoading || isValidate
-                                      }
+                                      className="action-button validate"
+                                      onClick={() => handleValidate(procedure)}
+                                      disabled={isValidate}
                                     >
-                                      {deleteProcedure.isLoading
-                                        ? "Eliminando..."
-                                        : "Eliminar"}
+                                      Validar
                                     </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            ))
-                          ) : (
-                            <p className="error">No existen expedientes</p>
-                          )
-                        ) : null}
-                      </tbody>
-                    </table>
-                  )}
+                                  :
+                                    <button
+                                      className="action-button view"
+                                      onClick={() => handleValidate(procedure)}
+                                      disabled={isValidate}
+                                    >
+                                      Ver
+                                    </button>
+                                  }
+                                  <button
+                                    className="action-button delete"
+                                    onClick={() =>
+                                      deleteProcedure.mutate(
+                                        procedure._id || procedure.id
+                                      )
+                                    }
+                                    disabled={
+                                      deleteProcedure.isLoading || isValidate
+                                    }
+                                  >
+                                    {deleteProcedure.isLoading
+                                      ? "Eliminando..."
+                                      : "Eliminar"
+                                    }
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                    <p className="error">No existen anuncios</p>
+                  ))}
                 </div>
               ) : (
                 <div className="version-mobile">

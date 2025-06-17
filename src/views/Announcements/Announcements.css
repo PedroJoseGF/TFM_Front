@@ -1,48 +1,47 @@
-.advertisementsView {
+.announcementsView {
     background-color: #f1f1f1;
     margin-bottom: 0;
 }
 
-.advertisements-container {
+.announcements-container {
     display: flex;
     text-align: start;
     margin: 10px;
     margin-left: 20px;
 }
 
-.advertisements-container .isLoading {
+.announcements-container .isLoading {
     width: 100%;
     margin-top: 20px;
 }
 
-.menuAdvertisements img {
+.menuAnnouncements img {
     margin: 16px 0;
 }
 
-.title-advertisements {
+.title-Announcements {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
 
-.title-advertisements h2 {
+.title-Announcements h2 {
     color: black;
     margin: 0;
     font-size: 30px;
 }
 
-.title-advertisements img {
+.title-Announcements img {
     margin-top: 5px;
     width: 35px;
-    /* height: 25px; */
 }
 
 .version-desktop {
     width: 85dvw;
 }
 
-.advertisements-table {
+.announcements-table {
     margin: 10px 0 35px 0;
     border-top: 1px solid #e4ded8;
     border-bottom: 1px solid #e4ded8;
@@ -51,56 +50,56 @@
     width: 100%;
 }
 
-.advertisements-table thead td {
+.announcements-table thead td {
     background-color: #e3e3e3;
 }
 
-.advertisements-table tbody td {
+.announcements-table tbody td {
     padding: 5px;
 }
 
-.advertisements-table thead td:first-child {
+.announcements-table thead td:first-child {
     padding-left: 10px;
 }
 
-.advertisements-table tbody td .status {
+.announcements-table tbody td .status {
     padding: 3px 6px;
     text-align: center;
     width: fit-content;
 }
 
-.advertisements-table tbody td .status.pending {
+.announcements-table tbody td .status.pending {
     background-color: #f79400b5;
 }
 
-.advertisements-table tbody td .status.notified {
+.announcements-table tbody td .status.notified {
     background-color: #0099ffa6;
 }
 
-.advertisements-table tbody td .status.rejected, .advertisements-table tbody td .status.closed {
+.announcements-table tbody td .status.rejected, .announcements-table tbody td .status.closed {
     background-color: #ff000c8a;
 }
 
-.advertisements-table tbody td .status.opened {
+.announcements-table tbody td .status.opened {
     background-color: #00ff73a6;
 }
 
-.advertisements-table tbody td:first-child {
+.announcements-table tbody td:first-child {
     padding-left: 10px;
 }
 
-.advertisements-table tbody td:last-child {
+.announcements-table tbody td:last-child {
     padding-left: 10px;
 }
 
-.advertisements-table th {
+.announcements-table th {
     color: black;
     text-align: left;
     padding-bottom: 10px;
     font-size: 15px;
 }
 
-.advertisements-table td {
+.announcements-table td {
     color: black;
     font-size: 16px;
     border-bottom: 1px solid #e4ded8;
@@ -136,56 +135,70 @@
 }
 
 @media (min-width: 768px) {
-    .advertisementsView {
+    .announcementsView {
         width: 100%;
     }
 
-    .advertisements-container .isLoading {
+    .announcements-container .isLoading {
         justify-content: left;
     }
 
-    .title-advertisements {
+    .title-Announcements {
         justify-content: normal;
     }
 
-    .advertisements-table td {
+    .announcements-table td {
         font-size: 14px;
     }
 
-    .advertisementsView .info-menu .menu {
+    .announcementsView .info-menu .menu {
         padding-top: 10px;
     }
 
-    .advertisementsView .submenu-procedures {
+    .announcementsView .submenu-procedures {
         top: 50px;
         position: absolute;
     }
 
-    .advertisementsView .submenu-myFolder {
+    .announcementsView .submenu-myFolder {
         top: 50px;
         position: absolute;
     }
 
-    .advertisementsView .submenu-advertising {
+    .announcementsView .submenu-announcement {
         top: 50px;
         position: absolute;
+    }
+
+    .announcements-container .fields-group {
+        display: flex;
+    }
+
+    .announcements-container .filter-group {
+        gap: 20px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+
+    .announcements-container .filter-field {
+        align-items: center;
     }
 }
 
 @media (min-width: 1280px) {
-    .advertisementsView {
+    .announcementsView {
         width: 100%;
     }
 
-    .advertisements-container {
+    .announcements-container {
         margin: 0 20px;
     }
     
-    .advertisements-table {
+    .announcements-table {
         margin: 15px 0 35px 0;
     }
 
-    .advertisements-table td {
+    .announcements-table td {
         font-size: 16px;
     }
 }
