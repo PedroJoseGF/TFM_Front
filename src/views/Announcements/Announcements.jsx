@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import apiClient from '../../api/client';
 import arrow from '../../assets/flecha-correcta.png';
-import AnnouncementsLogo from '../../assets/Announcements.png';
+import AnnouncementsLogo from '../../assets/announcements.png';
 import Menu from '../../components/Menu/Menu';
 import { Link } from 'react-router-dom';
 import './Announcements.css';
