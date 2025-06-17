@@ -13,6 +13,7 @@ export default function AdminUsers() {
   const queryClient = useQueryClient();
 
   const [form, setForm] = useState({ name: "", surname: "", email: "", dni: "", role: "user", password: "123456", enabled: true });
+  const [filters, setFilters] = useState({ name: "", email: "", dni: "", enabled: "", checkEnabled: true, checkDisabled: true });
   const [showModal, setShowModal] = useState(false);
   const [titleForm, setTitleForm] = useState("Crear usuario");
   const [isEdit, setIsEdit] = useState(false);
@@ -36,6 +37,8 @@ export default function AdminUsers() {
     }
     setIsLoading(false);
   }, [navigate, user]);
+  
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,7 +64,12 @@ export default function AdminUsers() {
     queryFn: async () => {
       try {
         setLoading(true);
-        const response = await apiClient.get("/users");
+        let response = null;
+        if(filters) {
+          response = await apiClient.post("/users/search", filters);
+        } else {
+          response = await apiClient.get("/users");
+        }
         setLoading(false);
         return response.data;
       } catch (error) {
@@ -169,6 +177,27 @@ export default function AdminUsers() {
     setSendingWelcomeEmail(false);
   };
 
+  const filterUsers = (e) => {
+      if(e.target.name === 'checkEnabled' || e.target.name === 'checkDisabled') {
+        if(e.target.name === 'checkEnabled') {
+          e.target.checked === true ? ( filters.checkDisabled === true ? (filters["enabled"] = "", setFilters({ ...filters })) : ( filters["enabled"] = true, setFilters({ ...filters }))) : filters.checkDisabled=== false ? (filters["enabled"] = null, setFilters({ ...filters })) : ( filters["enabled"] = false, setFilters({ ...filters }));
+        } else if (e.target.name === 'checkDisabled') {
+          e.target.checked === true ? ( filters.checkEnabled === true ? (filters["enabled"] = "", setFilters({ ...filters })) : ( filters["enabled"] = false, setFilters({ ...filters }))) : filters.checkEnabled === false ? (filters["enabled"] = null, setFilters({ ...filters })) : ( filters["enabled"] = true, setFilters({ ...filters }));
+        }
+        setFilters({ ...filters, [e.target.name]: e.target.checked });
+      } else {
+        setFilters({ ...filters, [e.target.name]: e.target.value });
+      }
+  };
+
+  useEffect(() => {
+    queryClient.invalidateQueries(["users"]);
+  }, [filters, queryClient]);
+
+  const clearFilters = () => {
+    setFilters({ name: "", email: "", dni: "", enabled: "", checkEnabled: true, checkDisabled: true });
+  }
+
   if (isLoading) return <>Cargando...</>;
 
   return (
@@ -180,7 +209,7 @@ export default function AdminUsers() {
         <img src={arrow} alt="" />
         <Link to={`/myfolder/profile`}>Mis datos</Link>
         <img src={arrow} alt="" />
-        <Link to={`/admin-users`}>Admin. de Usuarios</Link>
+        <Link to={`/myfolder/profile/admin-users`}>Admin. de Usuarios</Link>
       </div>
       <div className="adminUsers-container">
         <div className="adminUsers-content">
@@ -333,6 +362,34 @@ export default function AdminUsers() {
             <button className="user-create-button" onClick={handleCreate} disabled={loading || sendingWelcomeEmail}>
               + Crear nuevo usuario
             </button>
+            {(!loading && users.length !== 0) && (
+              <div className="filters">
+                <div className="fields-group">
+                  <div className="filter-group">
+                    <div className="filter-field">
+                      <input type="text" id="filter-name" name="name" className="fieldFilter" value={filters.name} onChange={filterUsers} placeholder="Nombre" />
+                    </div>
+                    <div className="filter-field">
+                      <input type="text" id="filter-email" name="email" className="fieldFilter" value={filters.email} onChange={filterUsers} placeholder="Email" />
+                    </div>
+                  </div>
+                  <div className="filter-group">
+                    <div className="filter-field">
+                      <input type="text" id="filter-dni" name="dni" className="fieldFilter" value={filters.dni} onChange={filterUsers} placeholder="Dni" />
+                    </div>
+                    <div className="filter-field">
+                      <label htmlFor="filter-enabled">Habilitado:</label>
+                      <input type="checkbox" id="filter-enabled" name="checkEnabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkEnabled} disabled={loading || sendingWelcomeEmail} />
+                      <label htmlFor="filter-disabled">Deshabilitado:</label>
+                      <input type="checkbox" id="filter-disabled" name="checkDisabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkDisabled} disabled={loading || sendingWelcomeEmail} />
+                    </div>
+                  </div>
+                </div>
+                <div className="buttons-group">
+                  <button onClick={clearFilters} disabled={loading || sendingWelcomeEmail}>Limpiar filtros</button>
+                </div>
+              </div>
+            )}
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">
@@ -341,6 +398,7 @@ export default function AdminUsers() {
                   ) : null}
                   {!loading && (
                     <div>
+                    {users.length !== 0 ? (
                       <table className="user-table">
                         <thead>
                           <tr>
@@ -351,7 +409,7 @@ export default function AdminUsers() {
                           </tr>
                         </thead>
                         <tbody>
-                          {users.length !== 0 ? (
+                          {users.length !== 0 && (
                             users?.map((user) => (
                               <tr key={user.id || user._id} className={`${!user.enabled ? "disabledUser" : ""}`}>
                                 <td>
@@ -395,11 +453,12 @@ export default function AdminUsers() {
                                 </td>
                               </tr>
                             ))
-                          ) : (
-                            <p className="error">No existen usuarios</p>
                           )}
                         </tbody>
                       </table>
+                    ): (
+                      <div className="isLoading">No existen usuarios</div>
+                    )}
                     </div>
                   )}
                 </div>

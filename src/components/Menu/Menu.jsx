@@ -8,7 +8,7 @@ const Menu = ({active}) => {
 
   const [showSubmenuProcedures, setShowSubmenuProcedures] = useState(false);
   const [showSubmenuMyFolder, setShowSubmenuMyFolder] = useState(false);
-  const [showSubmenuAdvertising, setShowSubmenuAdvertising] = useState(false);
+  const [showSubmenuAnnouncement, setShowSubmenuAnnouncement] = useState(false);
   
   return(
     <div className="info-menu">
@@ -41,13 +41,13 @@ const Menu = ({active}) => {
             </ul>}
           </div>
         </div>
-        <div onMouseEnter={ () => setShowSubmenuAdvertising(true) } onMouseLeave={ () => setShowSubmenuAdvertising(false) }>
-          <li className={`menu-option${active === 'advertisements' ? ' active' : ''}`}>
+        <div onMouseEnter={ () => setShowSubmenuAnnouncement(true) } onMouseLeave={ () => setShowSubmenuAnnouncement(false) }>
+          <li className={`menu-option${active === 'announcements' ? ' active' : ''}`}>
             Publicidad
           </li>
-          <div className="submenu submenu-advertising">
-            {showSubmenuAdvertising && <ul className="submenu-content">
-              <li><Link to="/advertisements">Tablón de anuncios</Link></li>
+          <div className="submenu submenu-announcement">
+            {showSubmenuAnnouncement && <ul className="submenu-content">
+              <li><Link to="/announcements">Tablón de anuncios</Link></li>
             </ul>}
           </div>
         </div>

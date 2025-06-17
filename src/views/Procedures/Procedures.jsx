@@ -25,6 +25,7 @@ const Procedures = () => {
     const {user} = useContext(UserContext);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         handleTitleTypeProcedure();
         handleTitlePlaceholder();
         handleDescriptionPlaceholder();

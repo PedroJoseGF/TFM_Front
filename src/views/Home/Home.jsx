@@ -14,12 +14,12 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(3);
 
-  const { data: advertisements = [] } = useQuery({
-    queryKey: ["advertisements"],
+  const { data: announcements = [] } = useQuery({
+    queryKey: ["announcements"],
     queryFn: async () => {
       try {
         setLoading(true);
-        const response = await apiClient.get('/advertisements');
+        const response = await apiClient.get('/announcements');
         setLoading(false);
         return response.data.reverse();
       } catch (error) {
@@ -30,7 +30,7 @@ const Home = () => {
     }
   });
 
-  const getMonthAdvertisement = (month) => {
+  const getMonthAnnouncement = (month) => {
     let monthText = '';
     switch (month) {
       case 1:
@@ -73,7 +73,7 @@ const Home = () => {
     return monthText;
   }
 
-  const moreAdvertisements = () => {
+  const moreAnnouncements = () => {
     setLimit(limit < 10 ? limit + 3 : limit);
   };
 
@@ -122,27 +122,27 @@ const Home = () => {
                 </li>
               </Link>
             </Card>
-            <Card title="Tablón de anuncios" className="advertisements">
+            <Card title="Tablón de anuncios" className="announcements">
               {loading ? <div className="isLoading">Cargando anuncios...</div> : null}
-              {!loading && (advertisements.length !== 0 ? (<div>
-                {advertisements.slice(0, limit).map((advertisement) => (
-                  <div key={advertisement.id || advertisement._id}className="advert">
+              {!loading && (announcements.length !== 0 ? (<div>
+                {announcements.slice(0, limit).map((announcement) => (
+                  <div key={announcement.id || announcement._id}className="announ">
                     <div className="date">
-                      <p className="month">{getMonthAdvertisement(new Date(advertisement.createdAt).getMonth())}{/* Mayo */}</p>
-                      <p className="day">{new Date(advertisement.createdAt).getDate()}{/* 21 */}</p>
+                      <p className="month">{getMonthAnnouncement(new Date(announcement.createdAt).getMonth())}</p>
+                      <p className="day">{new Date(announcement.createdAt).getDate()}</p>
                     </div>
-                    <div className="advert-content">
-                      <h4 className="advert-title">
-                        {advertisement.title}
+                    <div className="announ-content">
+                      <h4 className="announ-title">
+                        {announcement.title}
                       </h4>
-                      <p className="advert-descripction">
-                        {advertisement.description}
+                      <p className="announ-description">
+                        {announcement.description}
                       </p>
                     </div>
                   </div>
                 ))}
-                {limit < 10 && <button className="moreAdverts" onClick={moreAdvertisements}>Más publicaciones</button>}
-                {limit > 10 && <Link to="/advertisements"><button className="moreAdverts">Ver todas</button></Link>}
+                {(limit < 10 && limit < announcements.length ) && <button className="moreAnnouns" onClick={moreAnnouncements}>Más publicaciones</button>}
+                {(limit > 10 || limit >= announcements.length) && <Link to="/announcements"><button className="moreAnnouns">Ver todas</button></Link>}
               </div>
               ) : (
                 <p className="error">No existen anuncios ahora, intentelo más tarde</p>

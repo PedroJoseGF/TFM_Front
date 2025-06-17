@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 const apiClient = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -9,22 +10,15 @@ const apiClient = axios.create({
 
 apiClient.interceptors.request.use(async(config) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("token="))
-    ?.split("=")[1];
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    
+    config.withCredentials = true;
     return config;
 });
 
 apiClient.interceptors.response.use(
     (response) => {
         if(response.data.token) {
-            document.cookie = `token=${response.data.token}`;
+            const cookies = new Cookies();
+            cookies.set('token', response.data.token);
         }
         return response;
     },

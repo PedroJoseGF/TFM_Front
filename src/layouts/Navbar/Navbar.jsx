@@ -3,16 +3,20 @@ import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
+import apiClient from '../../api/client';
 import './Navbar.css';
+import Cookies from "universal-cookie";
 
 const Navbar = () => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(UserContext);
 
-    const logout = () => {
+    const logout = async () => {
+        await apiClient.post(`/auth/logout`, user);
         setUser(null);
-        document.cookie = "token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-        navigate("/");
+        const cookies = new Cookies();
+        cookies.removeAllChangeListeners();
+        navigate("/login");
     };
 
     return (

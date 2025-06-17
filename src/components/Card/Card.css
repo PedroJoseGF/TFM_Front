@@ -28,13 +28,13 @@
     height: 50px;
 }
 
-.advertisements, .myFolder {
+.announcements, .myFolder {
     width: 90%;
     border-radius: 8px;
     margin-bottom: 60px;
 }
 
-.advertisements h2, .myFolder h2, .procedures h2 {
+.announcements h2, .myFolder h2, .procedures h2 {
     color: black;
     margin: 0;
     font-size: 30px;
@@ -43,7 +43,7 @@
     margin-bottom: 15px;
 }
 
-.advertisements-content, .myFolder-content {
+.announcements-content, .myFolder-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +54,7 @@
     margin: 0;
 }
 
-.advert {
+.announ {
     display: flex;
     background-color: white;
     margin: 10px;
@@ -63,7 +63,7 @@
     border-top: 2px solid grey;
 }
 
-.advert .date {
+.announ .date {
     width: 70px;
     margin: 10px 0 0 10px;
 }
@@ -88,11 +88,11 @@
     border-bottom-right-radius: 8px;
 }
 
-.advert-content {
+.announ-content {
     width: 100%;
 }
 
-.advert-content .advert-title {
+.announ-content .announ-title {
     text-align: left;
     padding: 0 15px;
     margin: 0;
@@ -101,7 +101,7 @@
     font-weight: 500;
 }
 
-.advert-descripction {
+.announ-description {
     text-align: left;
     padding: 0 15px;
     margin-top: 5px;
@@ -142,7 +142,7 @@
     font-size: 12px;
 }
 
-.moreAdverts {
+.moreAnnouns {
     margin-bottom: 10px;
     background-color: #f02424;
 }
@@ -168,7 +168,7 @@
         width: 40%;
     }
 
-    .advertisements, .myFolder {
+    .announcements, .myFolder {
         max-width: 460px;
     }
 }

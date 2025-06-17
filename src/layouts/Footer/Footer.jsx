@@ -16,8 +16,8 @@ const Footer = () => {
                         <h3>Enlaces rápidos</h3>
                         <ul>
                             <li><Link to='/'>Inicio</Link></li>
-                            <li><Link to='/about'>Nosotros</Link></li>
-                            <li><Link to='/contact'>Contacto</Link></li>
+                            <li><Link to='/myfolder/profile'>Mis datos</Link></li>
+                            <li><Link to='/announcements'>Tablón Anuncios</Link></li>
                         </ul>
                     </div>
                     <hr></hr>
@@ -26,7 +26,7 @@ const Footer = () => {
                         <h3>Contacto</h3>
                         <p>Email: info@miayuntamiento.com</p>
                         <p>Teléfono: (123) 456-7890</p>
-                        <p>Dirección: Calle Avenida 123</p>
+                        <p>Dirección: Calle Avenida, 123</p>
                     </div>
                     <hr></hr>
                 </div>

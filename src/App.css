@@ -1,7 +1,6 @@
 #root {
   min-height: 100dvh;
   width: 100dvw;
-  /* max-width: 1280px; */
   margin: 0 auto;
   background-color: ghostwhite;
   text-align: center;
@@ -37,9 +36,8 @@ li {
   color: black;
 }
 
-.menuProcedures, .menuMyFolder, .menuAdvertisements {
+.menuProcedures, .menuMyFolder, .menuAnnouncements {
     display: flex;
-    /* padding-top: 30px; */
     margin: 0 20px;
     align-items: center;
     gap: 5px;
@@ -47,11 +45,11 @@ li {
 
 .adminUsersView .menuMyFolder,
 .adminProcedureView .menuMyFolder,
-.adminAdvertisementView .menuMyFolder {
+.adminAnnouncementView .menuMyFolder {
     margin: 15px 20px;
 }
 
-.menuProcedures img, .menuMyFolder img, .menuAdvertisements img {
+.menuProcedures img, .menuMyFolder img, .menuAnnouncements img {
     width: 10px;
     height: 10px;
 }
@@ -75,10 +73,5 @@ li {
     display: flex;
     justify-content: center;
     padding-top: 55px;
-    /* align-items: center; */
   }
-  
-  /* .menuProcedures, .menuMyFolder, .menuAdvertisements {
-    padding-top: 15px;
-  } */
 }

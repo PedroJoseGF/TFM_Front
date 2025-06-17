@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { UserProvider } from './context/userContext';
 import Home from './views/Home/Home';
 import AdminUsers from './views/AdminUsers/AdminUsers';
-import AdminAdvertisements from './views/AdminAdvertisements/AdminAdvertisements';
+import AdminAnnouncements from './views/AdminAnnouncements/AdminAnnouncements';
 import AdminProcedures from './views/AdminProcedures/AdminProcedures';
 import NotFound from './views/NotFound/NotFound';
 import Procedures from './views/Procedures/Procedures';
 import MyFolder from './views/MyFolder/MyFolder';
-import Advertisements from './views/Advertisements/Advertisements';
+import Announcements from './views/Announcements/Announcements';
 import Login from './views/Login/Login';
 import RestorePassword from './views/RestorePassword/RestorePassword';
 import Navbar from './layouts/Navbar/Navbar';
@@ -26,10 +26,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/procedures/:type" element={<Procedures />} />
               <Route path="/myfolder/:type" element={<MyFolder />} />
-              <Route path="/advertisements" element={<Advertisements />} />
+              <Route path="/announcements" element={<Announcements />} />
               <Route path="/login" element={<Login />} />
               <Route path="/myfolder/profile/admin-users" element={<AdminUsers />} />
-              <Route path="/myfolder/profile/admin-advertisements" element={<AdminAdvertisements />} />
+              <Route path="/myfolder/profile/admin-announcements" element={<AdminAnnouncements />} />
               <Route path="/myfolder/profile/admin-procedures" element={<AdminProcedures />} />
               <Route path="/restore-password/:id" element={<RestorePassword />} />
               <Route path="*" element={<NotFound />} />

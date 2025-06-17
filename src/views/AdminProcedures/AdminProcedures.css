@@ -212,6 +212,20 @@
     .form-group label {
         font-size: 20px;
     }
+    
+    .procedure-list-container .fields-group {
+        display: flex;
+    }
+
+    .procedure-list-container .filter-group {
+        gap: 20px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+
+    .procedure-list-container .filter-field {
+        align-items: center;
+    }
 
     .procedure-list-container {
         align-items: end;
