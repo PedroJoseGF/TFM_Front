@@ -304,64 +304,61 @@ export default function AdminAnnouncements() {
             >
               + Crear nuevo anuncio
             </button>
-            
-            {(!loading && announcements.length !== 0) && (
-              <div className="filters">
-                <div className="fields-group">
-                  <div className="filter-group">
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-title"
-                        name="title"
-                        className="fieldFilter"
-                        value={filters.title}
-                        onChange={filterAnnouncements}
-                        placeholder="Título"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-proceeding"
-                        name="proceeding"
-                        className="fieldFilter"
-                        value={filters.proceeding}
-                        onChange={filterAnnouncements}
-                        placeholder="Expediente"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-procedure"
-                        name="procedure"
-                        className="fieldFilter"
-                        value={filters.procedure}
-                        onChange={filterAnnouncements}
-                        placeholder="Procedimiento"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-category"
-                        name="category"
-                        className="fieldFilter"
-                        value={filters.category}
-                        onChange={filterAnnouncements}
-                        placeholder="Categoria"
-                      />
-                    </div>
+            <div className="filters">
+              <div className="fields-group">
+                <div className="filter-group">
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-title"
+                      name="title"
+                      className="fieldFilter"
+                      value={filters.title}
+                      onChange={filterAnnouncements}
+                      placeholder="Título"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-proceeding"
+                      name="proceeding"
+                      className="fieldFilter"
+                      value={filters.proceeding}
+                      onChange={filterAnnouncements}
+                      placeholder="Expediente"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-procedure"
+                      name="procedure"
+                      className="fieldFilter"
+                      value={filters.procedure}
+                      onChange={filterAnnouncements}
+                      placeholder="Procedimiento"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-category"
+                      name="category"
+                      className="fieldFilter"
+                      value={filters.category}
+                      onChange={filterAnnouncements}
+                      placeholder="Categoria"
+                    />
                   </div>
                 </div>
-                <div className="buttons-group">
-                  <button onClick={clearFilters} disabled={loading}>
-                    Limpiar filtros
-                  </button>
-                </div>
               </div>
-            )}
+              <div className="buttons-group">
+                <button onClick={clearFilters} disabled={loading}>
+                  Limpiar filtros
+                </button>
+              </div>
+            </div>
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">

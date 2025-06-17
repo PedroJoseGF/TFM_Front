@@ -362,34 +362,32 @@ export default function AdminUsers() {
             <button className="user-create-button" onClick={handleCreate} disabled={loading || sendingWelcomeEmail}>
               + Crear nuevo usuario
             </button>
-            {(!loading && users.length !== 0) && (
-              <div className="filters">
-                <div className="fields-group">
-                  <div className="filter-group">
-                    <div className="filter-field">
-                      <input type="text" id="filter-name" name="name" className="fieldFilter" value={filters.name} onChange={filterUsers} placeholder="Nombre" />
-                    </div>
-                    <div className="filter-field">
-                      <input type="text" id="filter-email" name="email" className="fieldFilter" value={filters.email} onChange={filterUsers} placeholder="Email" />
-                    </div>
+            <div className="filters">
+              <div className="fields-group">
+                <div className="filter-group">
+                  <div className="filter-field">
+                    <input type="text" id="filter-name" name="name" className="fieldFilter" value={filters.name} onChange={filterUsers} placeholder="Nombre" />
                   </div>
-                  <div className="filter-group">
-                    <div className="filter-field">
-                      <input type="text" id="filter-dni" name="dni" className="fieldFilter" value={filters.dni} onChange={filterUsers} placeholder="Dni" />
-                    </div>
-                    <div className="filter-field">
-                      <label htmlFor="filter-enabled">Habilitado:</label>
-                      <input type="checkbox" id="filter-enabled" name="checkEnabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkEnabled} disabled={loading || sendingWelcomeEmail} />
-                      <label htmlFor="filter-disabled">Deshabilitado:</label>
-                      <input type="checkbox" id="filter-disabled" name="checkDisabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkDisabled} disabled={loading || sendingWelcomeEmail} />
-                    </div>
+                  <div className="filter-field">
+                    <input type="text" id="filter-email" name="email" className="fieldFilter" value={filters.email} onChange={filterUsers} placeholder="Email" />
                   </div>
                 </div>
-                <div className="buttons-group">
-                  <button onClick={clearFilters} disabled={loading || sendingWelcomeEmail}>Limpiar filtros</button>
+                <div className="filter-group">
+                  <div className="filter-field">
+                    <input type="text" id="filter-dni" name="dni" className="fieldFilter" value={filters.dni} onChange={filterUsers} placeholder="Dni" />
+                  </div>
+                  <div className="filter-field">
+                    <label htmlFor="filter-enabled">Habilitado:</label>
+                    <input type="checkbox" id="filter-enabled" name="checkEnabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkEnabled} disabled={loading || sendingWelcomeEmail} />
+                    <label htmlFor="filter-disabled">Deshabilitado:</label>
+                    <input type="checkbox" id="filter-disabled" name="checkDisabled" className="fieldFilter" onChange={filterUsers} checked={filters.checkDisabled} disabled={loading || sendingWelcomeEmail} />
+                  </div>
                 </div>
               </div>
-            )}
+              <div className="buttons-group">
+                <button onClick={clearFilters} disabled={loading || sendingWelcomeEmail}>Limpiar filtros</button>
+              </div>
+            </div>
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">

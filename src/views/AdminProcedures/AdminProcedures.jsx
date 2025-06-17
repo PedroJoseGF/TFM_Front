@@ -198,72 +198,70 @@ export default function AdminProcedures() {
           </Modal>
 
           <div className="procedure-list-container">
-            {(!loading && procedures.length !== 0) && (
-              <div className="filters">
-                <div className="fields-group">
-                  <div className="filter-group">
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-title"
-                        name="title"
-                        className="fieldFilter"
-                        value={filters.title}
-                        onChange={filterProcedures}
-                        placeholder="Título"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-proceeding"
-                        name="proceeding"
-                        className="fieldFilter"
-                        value={filters.proceeding}
-                        onChange={filterProcedures}
-                        placeholder="Expediente"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <select
-                        id="filter-procedure"
-                        name="type"
-                        className="fieldFilter"
-                        value={filters.type}
-                        onChange={filterProcedures}
-                        required
-                      >
-                        <option value="">...</option>
-                        <option value="claims">Quejas y reclamaciones</option>
-                        <option value="majorWorksLicense">Solicitud de Licencia de Obra Mayor</option>
-                        <option value="executionMinorWorks">Declaración Responsable Ejecución Obras Menores</option>
-                        <option value="populationRegister">Gestión de padrón de habitantes</option>
-                      </select>
-                    </div>
-                    <div className="filter-field">
-                      <select
-                        id="filter-status"
-                        name="status"
-                        className="fieldFilter"
-                        value={filters.status}
-                        onChange={filterProcedures}
-                        required
-                      >
-                        <option value="">...</option>
-                        <option value="pending">Pendiente</option>
-                        <option value="rejected">Rechazado</option>
-                        <option value="accepted">Aceptado</option>
-                      </select>
-                    </div>
+            <div className="filters">
+              <div className="fields-group">
+                <div className="filter-group">
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-title"
+                      name="title"
+                      className="fieldFilter"
+                      value={filters.title}
+                      onChange={filterProcedures}
+                      placeholder="Título"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-proceeding"
+                      name="proceeding"
+                      className="fieldFilter"
+                      value={filters.proceeding}
+                      onChange={filterProcedures}
+                      placeholder="Expediente"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <select
+                      id="filter-procedure"
+                      name="type"
+                      className="fieldFilter"
+                      value={filters.type}
+                      onChange={filterProcedures}
+                      required
+                    >
+                      <option value="">...</option>
+                      <option value="claims">Quejas y reclamaciones</option>
+                      <option value="majorWorksLicense">Solicitud de Licencia de Obra Mayor</option>
+                      <option value="executionMinorWorks">Declaración Responsable Ejecución Obras Menores</option>
+                      <option value="populationRegister">Gestión de padrón de habitantes</option>
+                    </select>
+                  </div>
+                  <div className="filter-field">
+                    <select
+                      id="filter-status"
+                      name="status"
+                      className="fieldFilter"
+                      value={filters.status}
+                      onChange={filterProcedures}
+                      required
+                    >
+                      <option value="">...</option>
+                      <option value="pending">Pendiente</option>
+                      <option value="rejected">Rechazado</option>
+                      <option value="accepted">Aceptado</option>
+                    </select>
                   </div>
                 </div>
-                <div className="buttons-group">
-                  <button onClick={clearFilters} disabled={loading}>
-                    Limpiar filtros
-                  </button>
-                </div>
               </div>
-            )}
+              <div className="buttons-group">
+                <button onClick={clearFilters} disabled={loading}>
+                  Limpiar filtros
+                </button>
+              </div>
+            </div>
             <div className="table-container">
               {!tableVertical ? (
                 <div className="version-desktop">

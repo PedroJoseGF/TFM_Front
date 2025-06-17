@@ -90,141 +90,155 @@ const Announcements = () => {
               <img src={AnnouncementsLogo} alt="Tablón de anuncios" />
               <h2>Tablón de anuncios</h2>
             </div>
-            {(!loading && announcements.length !== 0) && (
-              <div className="filters">
-                <div className="fields-group">
-                  <div className="filter-group">
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-title"
-                        name="title"
-                        className="fieldFilter"
-                        value={filters.title}
-                        onChange={filterAnnouncements}
-                        placeholder="Título"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-proceeding"
-                        name="proceeding"
-                        className="fieldFilter"
-                        value={filters.proceeding}
-                        onChange={filterAnnouncements}
-                        placeholder="Expediente"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-procedure"
-                        name="procedure"
-                        className="fieldFilter"
-                        value={filters.procedure}
-                        onChange={filterAnnouncements}
-                        placeholder="Procedimiento"
-                      />
-                    </div>
-                    <div className="filter-field">
-                      <input
-                        type="text"
-                        id="filter-category"
-                        name="category"
-                        className="fieldFilter"
-                        value={filters.category}
-                        onChange={filterAnnouncements}
-                        placeholder="Categoria"
-                      />
-                    </div>
+            <div className="filters">
+              <div className="fields-group">
+                <div className="filter-group">
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-title"
+                      name="title"
+                      className="fieldFilter"
+                      value={filters.title}
+                      onChange={filterAnnouncements}
+                      placeholder="Título"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-proceeding"
+                      name="proceeding"
+                      className="fieldFilter"
+                      value={filters.proceeding}
+                      onChange={filterAnnouncements}
+                      placeholder="Expediente"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-procedure"
+                      name="procedure"
+                      className="fieldFilter"
+                      value={filters.procedure}
+                      onChange={filterAnnouncements}
+                      placeholder="Procedimiento"
+                    />
+                  </div>
+                  <div className="filter-field">
+                    <input
+                      type="text"
+                      id="filter-category"
+                      name="category"
+                      className="fieldFilter"
+                      value={filters.category}
+                      onChange={filterAnnouncements}
+                      placeholder="Categoria"
+                    />
                   </div>
                 </div>
-                <div className="buttons-group">
-                  <button onClick={clearFilters} disabled={loading}>
-                    Limpiar filtros
-                  </button>
-                </div>
               </div>
-            )}
-            {!tableVertical ? <div className="version-desktop">
-              {loading ? <div className="isLoading">Cargando anuncios...</div> : null}
-              {!loading && (announcements.length !== 0 ? (<div>
-                <table className="announcements-table">
-                  <thead>
-                    <tr>
-                      <td>DOCUMENTO</td>
-                      <td>EXPEDIENTE</td>
-                      <td>PROCEDIMIENTO</td>
-                      <td>CATERGORÍA</td>
-                      <td>DESCRIPCIÓN</td>
-                      <td>FECHA DE PUBLICACIÓN</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {announcements.slice(0, limit).map((announcement) => (
-                        <tr key={announcement.id || announcement._id}>
-                            <td>{announcement.title}</td>
-                            <td>{announcement.proceeding}</td>
-                            <td>{announcement.procedure}</td>
-                            <td>{announcement.category}</td>
-                            <td>{announcement.description}</td>
-                            <td>{announcement.createdAt}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-                {announcements.length >= limit && <button className="btnMore" onClick={moreAnnouncements}>Mostrar más</button>}
+              <div className="buttons-group">
+                <button onClick={clearFilters} disabled={loading}>
+                  Limpiar filtros
+                </button>
               </div>
-              ) : (
-                <p className="error">No existen anuncios</p>
-              ))
-            }
             </div>
-            :
-              <div className="version-mobile">
-                {!loading ? (announcements.length !== 0 ? (
-                  <div>
-                    {announcements.slice(0, limit).map((announcement) => (
-                      <table key={announcement.id || announcement._id} className="announcements-table">
+            {!tableVertical ? (
+              <div className="version-desktop">
+                {loading ? (
+                  <div className="isLoading">Cargando anuncios...</div>
+                ) : null}
+                {!loading &&
+                  (announcements.length !== 0 ? (
+                    <div>
+                      <table className="announcements-table">
+                        <thead>
+                          <tr>
+                            <td>DOCUMENTO</td>
+                            <td>EXPEDIENTE</td>
+                            <td>PROCEDIMIENTO</td>
+                            <td>CATERGORÍA</td>
+                            <td>DESCRIPCIÓN</td>
+                            <td>FECHA DE PUBLICACIÓN</td>
+                          </tr>
+                        </thead>
                         <tbody>
-                          <tr>
-                            <th>Título</th>
-                            <td>{announcement.title}</td>
-                          </tr>
-                          <tr>
-                            <th>EXPEDIENTE</th>
-                            <td>{announcement.proceeding}</td>
-                          </tr>
-                          <tr>
-                            <th>PROCEDIMIENTO</th>
-                            <td>{announcement.procedure}</td>
-                          </tr>
-                          <tr>
-                            <th>CATEGORIA</th>
-                            <td>{announcement.category}</td>
-                          </tr>
-                          <tr>
-                            <th>DESCRIPCÍON</th>
-                            <td>{announcement.description}</td>
-                          </tr>
-                          <tr>
-                            <th>FECHA DE PUBLICACIÓN</th>
-                            <td>{announcement.createdAt}</td>
-                          </tr>
+                          {announcements.slice(0, limit).map((announcement) => (
+                            <tr key={announcement.id || announcement._id}>
+                              <td>{announcement.title}</td>
+                              <td>{announcement.proceeding}</td>
+                              <td>{announcement.procedure}</td>
+                              <td>{announcement.category}</td>
+                              <td>{announcement.description}</td>
+                              <td>{announcement.createdAt}</td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
-                    ))}
-                  </div> 
+                      {announcements.length >= limit && (
+                        <button className="btnMore" onClick={moreAnnouncements}>
+                          Mostrar más
+                        </button>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="error">No existen anuncios</p>
+                  ))}
+              </div>
+            ) : (
+              <div className="version-mobile">
+                {!loading ? (
+                  announcements.length !== 0 ? (
+                    <div>
+                      {announcements.slice(0, limit).map((announcement) => (
+                        <table
+                          key={announcement.id || announcement._id}
+                          className="announcements-table"
+                        >
+                          <tbody>
+                            <tr>
+                              <th>Título</th>
+                              <td>{announcement.title}</td>
+                            </tr>
+                            <tr>
+                              <th>EXPEDIENTE</th>
+                              <td>{announcement.proceeding}</td>
+                            </tr>
+                            <tr>
+                              <th>PROCEDIMIENTO</th>
+                              <td>{announcement.procedure}</td>
+                            </tr>
+                            <tr>
+                              <th>CATEGORIA</th>
+                              <td>{announcement.category}</td>
+                            </tr>
+                            <tr>
+                              <th>DESCRIPCÍON</th>
+                              <td>{announcement.description}</td>
+                            </tr>
+                            <tr>
+                              <th>FECHA DE PUBLICACIÓN</th>
+                              <td>{announcement.createdAt}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      ))}
+                    </div>
                   ) : (
                     <p className="error">No existen anuncios</p>
                   )
-                ): (
+                ) : (
                   <div className="isLoading">Cargando anuncios...</div>
                 )}
-                {announcements.length > limit && <button className="btnMore" onClick={moreAnnouncements}>Mostrar más</button>}
+                {announcements.length > limit && (
+                  <button className="btnMore" onClick={moreAnnouncements}>
+                    Mostrar más
+                  </button>
+                )}
               </div>
-            }
+            )}
           </div>
         </div>
       </div>
