@@ -8,7 +8,7 @@ import arrow from "../../assets/flecha-correcta.png";
 import mailLogo from "../../assets/mailbox.png";
 import myFilesLogo from "../../assets/myFiles.png";
 import profileLogo from "../../assets/profile.png";
-import AnnouncementsLogo from "../../assets/Announcements.png";
+import AnnouncementsLogo from "../../assets/announcements.png";
 import procedureLogo from "../../assets/procedure.png";
 import Modal from "../../components/Modal/Modal";
 import Menu from "../../components/Menu/Menu";
