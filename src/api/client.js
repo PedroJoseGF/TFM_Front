@@ -16,7 +16,7 @@ apiClient.interceptors.request.use(async(config) => {
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
     console.log(token);
-    console.log(new Cookies().get('token'));
+    console.log(new Cookies());
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
