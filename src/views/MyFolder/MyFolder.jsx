@@ -75,7 +75,7 @@ const MyFolder = () => {
             date.getMinutes();
         });
         setLoading(false);
-        return response.data;
+        return response.data.reverse();
       } catch (error) {
         console.error("Error fetching notifications:", error);
         setLoading(false);
@@ -119,7 +119,7 @@ const MyFolder = () => {
           
         });
         setLoading(false);
-        return response.data;
+        return response.data.reverse();
       } catch (error) {
         console.error("Error fetching procedures:", error);
         setLoading(false);

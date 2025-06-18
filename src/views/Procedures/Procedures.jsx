@@ -45,12 +45,23 @@ const Procedures = () => {
         formData.append('file', file);
         }
         formData.append('type', type);
-        user ? formData.append('user', user._id) : formData.append('user', 'Anónimo')
-        const config = {
-        headers: {
-            'content-type': 'multipart/form-data',
-        },
-        };
+        user ? formData.append('user', user._id) : formData.append('user', 'Anónimo');
+        let config = {};
+        const token = localStorage.getItem('token') || document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+        if (!token) {
+            config = {
+                headers: {
+                    'content-type': 'multipart/form-data',
+                },
+            };
+        } else {
+            config = {
+                headers: {
+                    'content-type': 'multipart/form-data',
+                    'authorization': 'Bearer ' + token,
+                },
+            };  
+        }
         axios.post(url, formData, config).then(() => {
             setForm({title: '', description: ''});
             setFile(null);
