@@ -16,6 +16,7 @@ const Navbar = () => {
         setUser(null);
         const cookies = new Cookies();
         cookies.removeAllChangeListeners();
+        localStorage.removeItem('token');
         navigate("/login");
     };
 

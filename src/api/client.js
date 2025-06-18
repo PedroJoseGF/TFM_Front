@@ -11,7 +11,7 @@ const apiClient = axios.create({
 apiClient.interceptors.request.use(async(config) => {
     await new Promise(resolve => setTimeout(resolve, 2000));
     config.withCredentials = true;
-    const token = document.cookie
+    let token = document.cookie
     .split("; ")
     .find((row) => row.startsWith("token="))
     ?.split("=")[1];
@@ -19,6 +19,12 @@ apiClient.interceptors.request.use(async(config) => {
     console.log(new Cookies());
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
+    } else {
+        token = localStorage.getItem('token');
+        console.log('Token localStorage:', token);
+        if(token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
     }
     console.log(config);
     return config;
@@ -29,6 +35,7 @@ apiClient.interceptors.response.use(
         if(response.data.token) {
             const cookies = new Cookies();
             cookies.set('token', response.data.token);
+            localStorage.setItem('token', response.data.token);
         }
         return response;
     },
